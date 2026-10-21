@@ -11,6 +11,8 @@
 
 Built for the **Nebius x NVIDIA Global AI Hackathon** (track: Personal AI).
 
+**Live demo:** <https://opportunity-shield-6zsl.onrender.com>. It runs on Render's free tier, so the first request after a while idle can take about a minute to wake the server.
+
 It has four parts:
 
 - **Analyze:** paste any listing and get APPLY / CAUTION / AVOID, with quoted evidence, eligibility, the real prizes per place and expected value per hour.
