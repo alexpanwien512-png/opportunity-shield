@@ -1,5 +1,7 @@
 # Opportunity Shield
 
+![Paste a link → live agent timeline → verdict](docs/demo.gif)
+
 **A personal AI agent that vets paid opportunities and exposes the traps.** You paste a hackathon, bounty or GitHub issue. Opportunity Shield reads it and checks whether *you* are actually eligible: region, format, preconditions. It works out the real prize per place and your expected value per hour. It also flags bait, with each flag backed by a quote from the page:
 
 - star, follow or fork farms
