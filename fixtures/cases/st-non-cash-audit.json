@@ -1,0 +1,80 @@
+{
+  "http:https://superteam.fun/api/listings/details/vaultline-security-audit-grants-for-colosseum-projects-up-to-4000-usdc-each": {
+    "id": "e3bcf553-958f-4b26-8c1b-799476ceb873",
+    "title": "Vaultline Security Audit Grants for Colosseum Projects: Up to 4,000 USDC Each",
+    "slug": "vaultline-security-audit-grants-for-colosseum-projects-up-to-4000-usdc-each",
+    "description": "<p class=\"text-node\"><strong>About Vaultline Security</strong></p><p class=\"text-node\">Vaultline Security works to make Web3 safer. We believe strong security is essential for the ecosystem to grow and for builders and users to trust decentralized technology.</p><p class=\"text-node\"><strong>The Opportunity</strong></p><p class=\"text-node\">We're offering audit grants to 10 Solana projects from the Colosseum Hackathon. Each selected team will receive a Vaultline security audit, either fully covered or at a significant discount, to strengthen their security before launch or scale.</p><p class=\"text-node\"><strong>What the Grant Covers</strong></p><ul class=\"list-node\"><li><p class=\"text-node\">Each grant is worth up to 4,000 USDC in audit services, applied directly to a Vaultline audit. It is not paid out as cash.</p></li><li><p class=\"text-node\">Solana programs (Anchor or native) are in scope.</p></li><li><p class=\"text-node\">There's no fixed size limit. Vaultline will review each codebase and provide a full quote based on its complexity and lines of code. If the quote is within the grant amount, the audit is fully covered. If it's higher, the grant is applied as a discount.</p></li></ul><p class=\"text-node\"><strong>Who Should Apply</strong></p><p class=\"text-node\">Solana projects that took part in the Colosseum Hackathon and meet these conditions:</p><ul class=\"list-node\"><li><p class=\"text-node\">The codebase is feature-complete or close to it, so audit scope won't change significantly.</p></li><li><p class=\"text-node\">The code is in a repository Vaultline can access.</p></li><li><p class=\"text-node\">The team can respond to findings and implement fixes after the audit.</p></li><li><p class=\"text-node\">The team is prepared to cover any remaining cost if their quote exceeds the grant amount.</p></li></ul><p class=\"text-node\"><strong>What to Submit</strong></p><p class=\"text-node\">Answer the application question with:</p><ul class=\"list-node\"><li><p class=\"text-node\"> Project name, short description, and Colosseum submission link</p></li><li><p class=\"text-node\">Repository link and the specific programs to be audited</p></li><li><p class=\"text-node\">Approximate lines of code (required, so we can quote accurately)</p></li><li><p class=\"text-node\">Current stage (devnet, testnet, or mainnet), plus any user or TVL figures</p></li><li><p class=\"text-node\">1-2 paragraphs on why an audit matters for your project right now</p></li><li><p class=\"text-node\">Team contact details</p></li></ul><p class=\"text-node\"><strong>Selection Criteria</strong></p><ul class=\"list-node\"><li><p class=\"text-node\">Project potential: How impactful and innovative is the project within the Solana ecosystem?</p></li><li><p class=\"text-node\">Audit need: How much do user funds or trust depend on the code being secure?</p></li><li><p class=\"text-node\">Readiness: Is the codebase mature and stable enough for a meaningful audit?</p></li></ul><p class=\"text-node\"><strong>Rewards</strong></p><p class=\"text-node\">10 audit grants, each worth up to 4,000 USDC in Vaultline audit services. Final grant value is based on each project's custom quote.</p><p class=\"text-node\"><strong>Timeline</strong></p><ul class=\"list-node\"><li><p class=\"text-node\">Applications close: October 31, 2026</p></li><li><p class=\"text-node\">Selected projects announced: November 2, 2026</p></li></ul><p class=\"text-node\"><strong>Announcement</strong></p><p class=\"text-node\">Vaultline will announce the selected projects on Superteam Earn, Twitter, and LinkedIn. By applying, selected teams agree to be named in the announcement and to share the post from their own accounts.</p>",
+    "deadline": "2026-10-31T21:59:59.000Z",
+    "commitmentDate": "2026-11-02T21:59:59.000Z",
+    "eligibility": [
+      {
+        "type": "text",
+        "order": 1,
+        "optional": false,
+        "question": "Share: project name & description, Colosseum link, repo link, programs to audit, approx. LOC, stage (devnet/testnet/mainnet) + users/TVL, why an audit matters now, and team contact details."
+      }
+    ],
+    "status": "OPEN",
+    "token": "USDC",
+    "rewardAmount": 40000,
+    "rewards": {
+      "1": 4000,
+      "2": 4000,
+      "3": 4000,
+      "4": 4000,
+      "5": 4000,
+      "6": 4000,
+      "7": 4000,
+      "8": 4000,
+      "9": 4000,
+      "10": 4000
+    },
+    "maxBonusSpots": 0,
+    "sponsorId": "d2cf6314-c2de-474c-b5a9-23f80f3b1586",
+    "isPublished": true,
+    "skills": [
+      {
+        "skills": "Blockchain",
+        "subskills": []
+      }
+    ],
+    "type": "bounty",
+    "requirements": null,
+    "isWinnersAnnounced": false,
+    "region": "Global",
+    "pocSocials": "https://t.me/DevonMartens",
+    "publishedAt": "2026-10-09T08:06:17.385Z",
+    "isPrivate": false,
+    "agentAccess": "HUMAN_ONLY",
+    "hackathonId": null,
+    "compensationType": "fixed",
+    "maxRewardAsk": null,
+    "minRewardAsk": null,
+    "isFndnPaying": false,
+    "winnersAnnouncedAt": null,
+    "isPro": false,
+    "sponsor": {
+      "name": "Vaultline Security",
+      "logo": "https://res.cloudinary.com/dgvnuwspr/image/upload/v1790841400/earn-sponsor/ytulpmnkn0l9geqkx8zl.webp",
+      "slug": "vaultline-group",
+      "url": "https://www.vaultlinegroup.com/",
+      "entityName": "Vaultline Security Inc",
+      "isVerified": false,
+      "isCaution": false
+    },
+    "poc": {
+      "id": "f8e87635-3232-47d8-a35f-fe68e610808b",
+      "firstName": "Devon",
+      "lastName": "Martens",
+      "username": "vaultline-group",
+      "photo": "https://res.cloudinary.com/dgvnuwspr/image/upload/v1790841274/earn-pfp/eizfeqhxw7wxzyos1hot.webp"
+    },
+    "Hackathon": null
+  },
+  "http:https://superteam.fun/api/listings/e3bcf553-958f-4b26-8c1b-799476ceb873/submission-count": 79,
+  "meta:capturedAt": "2026-10-21T10:09:21.163Z",
+  "meta:models": {
+    "fast": "nvidia/Nemotron-3_5-Lightning",
+    "reasoning": "nvidia/Nemotron-3-Ultra-550b-a55b"
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "http:https://superteam.fun/api/listings/details/travel-boost-for-bp26": {
+    "id": "c0c52925-1f13-45d0-b283-2bb174fac499",
+    "title": "Travel boost: Create Content for Breakpoint 2026",
+    "slug": "travel-boost-for-bp26",
+    "description": "<h2 class=\"heading-node\">About Superteam Germany</h2><p class=\"text-node\">Superteam Germany is part of a global network of communities building the Solana ecosystem. We're all about empowering developers and creators to build cool stuff on Solana. We host events, bounties, and provide resources to help folks get started and grow in the Solana space.</p><h2 class=\"heading-node\">Mission</h2><p class=\"text-node\">Create banger content about Breakpoint 2026 !</p><p class=\"text-node\">✨ If you've never been, let us know why you're dying to go this year.</p><p class=\"text-node\">✨ Or share your best memories at Breakpoint.</p><p class=\"text-node\">👉 The goal is simple: Make people feel excited, included, and compelled to attend.</p><p class=\"text-node\">Depending on your audience, your content could speak to:</p><ul class=\"list-node\"><li><p class=\"text-node\">Newcomers on Solana who don’t know yet what to expect of Breakpoint</p></li><li><p class=\"text-node\">Builders / developers</p></li><li><p class=\"text-node\">Community members &amp; power users</p></li></ul><h2 class=\"heading-node\">Scope Detail</h2><ul class=\"list-node\"><li><p class=\"text-node\">Create a social media post on X, Instagram or LinkedIn expressing your excitement for Breakpoint 2026 (<a target=\"_blank\" rel=\"noopener noreferrer nofollow\" class=\"link\" href=\"https://solana.com/breakpoint\">https://solana.com/breakpoint</a>)</p></li><li><p class=\"text-node\">Your CTA should invite people to register for the event: <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" class=\"link\" href=\"https://luma.com/breakpoint2026?tk=HYnlfc\"><u>https://luma.com/breakpoint2026?tk=HYnlfc</u></a>&nbsp;</p></li><li><p class=\"text-node\">Highlight a Germany/Superteam Germany angle in your post. This could be anything from being member of the German Solana community or your excitement to meet us there.</p></li><li><p class=\"text-node\">Quote Retweet (QRT) <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" class=\"link\" href=\"https://x.com/SuperteamDE/status/2110642401895194874?s=2010:03\">this post</a> with a thoughtful comment.</p></li><li><p class=\"text-node\">Tag both @SolanaEvents and @SuperteamDE in your post.</p></li><li><p class=\"text-node\">Any type of image or video content is allowed (AI, animation, personal, ..)</p></li></ul><h2 class=\"heading-node\">Submission Requirements</h2><ul class=\"list-node\"><li><p class=\"text-node\">A link to your original social media post.</p></li><li><p class=\"text-node\">A link to Quote Retweet of Superteam Germany's announcement post.</p></li><li><p class=\"text-node\">Content must be in English.</p></li><li><p class=\"text-node\">Ensure both required tags (@SolanaEvents and @SuperteamDE) are included.</p></li><li><p class=\"text-node\">Include the CTA link: <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" class=\"link\" href=\"https://luma.com/breakpoint2026?tk=HYnlfc\"><u>https://luma.com/breakpoint2026?tk=HYnlfc</u></a>&nbsp;</p></li></ul><h2 class=\"heading-node\">Judging Criteria</h2><ul class=\"list-node\"><li><p class=\"text-node\"><strong>Creativity and Engagement:</strong> How interesting and engaging is your post?</p></li><li><p class=\"text-node\"><strong>Clarity of Enthusiasm:</strong> Does your post clearly show what you're excited about for Breakpoint?</p></li><li><p class=\"text-node\"><strong>Correct Tags:</strong> Have you correctly tagged @SolanaEvents and @SuperteamDE?</p></li><li><p class=\"text-node\"><strong>Completion of Requirements:</strong> Have you submitted both an original post and a QRT?</p></li><li><p class=\"text-node\"><strong>Video submissions are favored</strong></p></li></ul><h2 class=\"heading-node\">Rewards</h2><p class=\"text-node\">We will pick 15 winners to receive a travel boost <strong>worth 400 USDG each</strong>.</p>",
+    "deadline": "2026-10-25T21:59:59.000Z",
+    "commitmentDate": "2026-10-30T21:59:59.000Z",
+    "eligibility": [
+      {
+        "type": "link",
+        "order": 1,
+        "optional": null,
+        "question": "Link to your original social media post."
+      },
+      {
+        "type": "link",
+        "order": 2,
+        "optional": null,
+        "question": "Link to your Quote Retweet of Superteam Germany's announcement post."
+      }
+    ],
+    "status": "OPEN",
+    "token": "USDG",
+    "rewardAmount": 6000,
+    "rewards": {
+      "1": 400,
+      "2": 400,
+      "3": 400,
+      "4": 400,
+      "5": 400,
+      "6": 400,
+      "7": 400,
+      "8": 400,
+      "9": 400,
+      "10": 400,
+      "99": 400
+    },
+    "maxBonusSpots": 5,
+    "sponsorId": "16a1325a-9496-4102-84e6-c3322a1bfc56",
+    "isPublished": true,
+    "skills": [
+      {
+        "skills": "Content",
+        "subskills": [
+          "Writing",
+          "Social Media",
+          "Video"
+        ]
+      }
+    ],
+    "type": "bounty",
+    "requirements": null,
+    "isWinnersAnnounced": false,
+    "region": "Germany",
+    "pocSocials": "https://t.me/+3Y2DX_7Plus1NzMy",
+    "publishedAt": "2026-10-15T08:22:01.267Z",
+    "isPrivate": false,
+    "agentAccess": "HUMAN_ONLY",
+    "hackathonId": null,
+    "compensationType": "fixed",
+    "maxRewardAsk": null,
+    "minRewardAsk": null,
+    "isFndnPaying": true,
+    "winnersAnnouncedAt": null,
+    "isPro": false,
+    "sponsor": {
+      "name": "Superteam Germany",
+      "logo": "https://res.cloudinary.com/dgvnuwspr/image/upload/v1680563012/earn-sponsors/recDH2T4vsTezh3Je.png",
+      "slug": "superteam-germany",
+      "url": "https://de.superteam.fun",
+      "entityName": "Superteam Germany",
+      "isVerified": true,
+      "isCaution": false
+    },
+    "poc": {
+      "id": "b1848cab-c423-439b-944e-51239c1b8681",
+      "firstName": "Superteam",
+      "lastName": "Germany",
+      "username": "baggy-bondage1477",
+      "photo": null
+    },
+    "Hackathon": null
+  },
+  "http:https://superteam.fun/api/listings/c0c52925-1f13-45d0-b283-2bb174fac499/submission-count": 15,
+  "meta:capturedAt": "2026-10-21T10:09:20.465Z",
+  "meta:models": {
+    "fast": "nvidia/Nemotron-3_5-Lightning",
+    "reasoning": "nvidia/Nemotron-3-Ultra-550b-a55b"
+  }
+}
