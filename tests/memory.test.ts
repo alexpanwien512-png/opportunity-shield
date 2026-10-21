@@ -92,3 +92,22 @@ describe("analyzeWithMemory", () => {
     expect(ids).not.toContain("engagement-farming");
   });
 });
+
+describe("progress events", () => {
+  it("reports every pipeline step in order without changing the result", async () => {
+    const db = new Store(":memory:");
+    const events: string[] = [];
+    const r = await analyzeWithMemory(A, ISSUE, { db, io: fixtureIO(), onProgress: (e) => events.push(`${e.step}:${e.status}`) });
+    expect(events).toEqual([
+      "fetch:start", "fetch:done", "extract:start", "extract:done", "eligibility:done", "flags:done", "verdict:start", "verdict:done",
+    ]);
+    const plain = await analyzeWithMemory(B, ISSUE, { db: new Store(":memory:"), io: fixtureIO() });
+    expect(r.verdict).toBe(plain.verdict);
+    expect(r.flags.map((f) => f.id)).toEqual(plain.flags.map((f) => f.id));
+  });
+
+  it("a throwing listener cannot break an analysis", async () => {
+    const r = await analyzeWithMemory(A, ISSUE, { db: new Store(":memory:"), io: fixtureIO(), onProgress: () => { throw new Error("ui bug"); } });
+    expect(r.verdict).toBe("AVOID");
+  });
+});

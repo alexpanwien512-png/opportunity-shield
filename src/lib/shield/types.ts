@@ -142,3 +142,12 @@ export interface AnalysisResult {
   analyzedAt: string;
   pipelineVersion: number;
 }
+
+/** Live progress of one analysis, for the UI timeline. Purely informational: never changes the result. */
+export type ProgressStep = "fetch" | "extract" | "eligibility" | "flags" | "verdict";
+export interface ProgressEvent {
+  step: ProgressStep;
+  status: "start" | "done" | "skipped";
+  detail?: string;
+  ms?: number;
+}

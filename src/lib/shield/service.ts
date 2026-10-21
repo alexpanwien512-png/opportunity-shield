@@ -5,7 +5,7 @@ import type { IO } from "./io";
 import { liveIO } from "./live";
 import { normalizeUrl } from "./sources";
 import { inputsKey, store, type Store } from "./store";
-import type { AnalysisResult } from "./types";
+import type { AnalysisResult, ProgressEvent } from "./types";
 
 const CACHE_MS = 6 * 60 * 60 * 1000; // re-use an analysis for 6h to save Tavily/Token Factory credits
 
@@ -14,7 +14,7 @@ export const MODELS = { fast: config.fastModel, reasoning: config.reasoningModel
 export async function analyzeWithMemory(
   owner: string,
   rawUrl: string,
-  opts: { force?: boolean; io?: IO; db?: Store; beforeLiveRun?: () => Promise<void> } = {},
+  opts: { force?: boolean; io?: IO; db?: Store; beforeLiveRun?: () => Promise<void>; onProgress?: (e: ProgressEvent) => void } = {},
 ): Promise<AnalysisResult & { cached: boolean }> {
   const db = opts.db ?? store();
   const url = normalizeUrl(rawUrl);
@@ -28,7 +28,7 @@ export async function analyzeWithMemory(
     }
   }
   await opts.beforeLiveRun?.(); // e.g. the demo rate limit: cache hits stay free
-  const result = await analyzeUrl(url, { io: opts.io ?? liveIO, ...inputs, models: MODELS });
+  const result = await analyzeUrl(url, { io: opts.io ?? liveIO, ...inputs, models: MODELS, onProgress: opts.onProgress });
   db.saveAnalysis(key, result);
   db.recordHistory(owner, key, result);
   return { ...result, cached: false };

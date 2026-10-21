@@ -4,7 +4,7 @@ import { fetchSource } from "./sources";
 import { extractFacts, judge, type ModelVerdict } from "./llm";
 import { DEFAULT_RULES, gateVerdict, isVerbatim, runRules, stricter, type RuleSpec } from "./rules";
 import { describeEV, expectedValue } from "./ev";
-import type { AnalysisResult, Eligibility, Extraction, Profile, RedFlag, Verdict } from "./types";
+import type { AnalysisResult, Eligibility, Extraction, Profile, ProgressEvent, RedFlag, Verdict } from "./types";
 
 /** Bump when rules, prompts or EV logic change: cached analyses from older versions are recomputed. */
 export const PIPELINE_VERSION = 5;
@@ -15,6 +15,7 @@ export interface AnalyzeOptions {
   rules?: RuleSpec[];
   blacklist?: string[];
   models: { fast: string; reasoning: string };
+  onProgress?: (e: ProgressEvent) => void;
 }
 
 const FALLBACK_SUMMARY: Record<Verdict, string> = {
@@ -34,26 +35,52 @@ export async function analyzeUrl(url: string, opts: AnalyzeOptions): Promise<Ana
     }
   };
 
+  const emit = (e: ProgressEvent) => {
+    try {
+      opts.onProgress?.(e);
+    } catch {
+      /* a broken listener must never break an analysis */
+    }
+  };
+
+  emit({ step: "fetch", status: "start" });
   const bundle = await time("fetch", () => fetchSource(url, opts.io));
+  const SOURCE: Record<string, string> = { "tavily:extract": "Tavily Extract", "tavily:search": "Tavily Search", "github:api": "GitHub API", "superteam:api": "Superteam API", "devpost:api": "Devpost API", "github:api-unavailable": "GitHub API (rate-limited)" };
+  emit({ step: "fetch", status: "done", ms: t.fetch, detail: `Read ${(bundle.text.length / 1000).toFixed(1)}k characters · ${bundle.fetchedWith.map((x) => SOURCE[x] ?? x).join(" + ")}` });
 
   let extraction: Extraction | null = null;
+  emit({ step: "extract", status: "start", detail: "Reading prizes, region, deadline and quotes…" });
   try {
     extraction = await time("extract", () => extractFacts(opts.io, opts.models.fast, bundle));
+    const n = (k: number, w: string) => `${k} ${w}${k === 1 ? "" : "s"}`;
+    emit({ step: "extract", status: "done", ms: t.extract, detail: `${n(extraction.prizes.length, "prize")}, ${n(Object.keys(extraction.quotes ?? {}).length, "verbatim quote")}` });
   } catch (err) {
     console.warn("extraction failed, continuing with platform facts only:", (err as Error).message);
+    emit({ step: "extract", status: "skipped", ms: t.extract, detail: "Model unavailable — using platform facts" });
   }
 
   const ctx = { bundle, extraction, profile: opts.profile, blacklist: (opts.blacklist ?? []).map((b) => b.toLowerCase()) };
   const flags = runRules(ctx, opts.rules ?? DEFAULT_RULES);
   const ev = expectedValue(bundle, extraction, flags);
+  const regionHit = flags.find((f) => f.id === "region-mismatch");
+  emit({ step: "eligibility", status: "done", detail: regionHit ? regionHit.explanation : `Open to residents of ${opts.profile.residenceCountry}` });
+  const bySev = (s: string) => flags.filter((f) => f.severity === s).length;
+  emit({
+    step: "flags",
+    status: "done",
+    detail: flags.length ? `${flags.length} red flag${flags.length > 1 ? "s" : ""}${bySev("critical") ? ` · ${bySev("critical")} critical` : ""}` : "No red flags",
+  });
 
   let model: ModelVerdict | null = null;
+  emit({ step: "verdict", status: "start", detail: "Weighing facts, red flags and your profile…" });
   try {
     model = await time("verdict", () =>
       judge(opts.io, opts.models.reasoning, { bundle, extraction, flags, gate: gateVerdict(flags), profile: opts.profile, evSummary: describeEV(ev) }),
     );
+    emit({ step: "verdict", status: "done", ms: t.verdict, detail: `Model says ${model.verdict.toLowerCase()}` });
   } catch (err) {
     console.warn("verdict model failed, using rule verdict:", (err as Error).message);
+    emit({ step: "verdict", status: "skipped", ms: t.verdict, detail: "Model unavailable — rules-only verdict" });
   }
 
   // Model-proposed flags survive only if their quote is really on the page.

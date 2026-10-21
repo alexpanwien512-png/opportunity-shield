@@ -40,6 +40,28 @@ URL ─▶ Tavily Extract ──────────┐   page text: every q
                                      • extra flags kept only if their quote is on the page
 ```
 
+### Interface
+
+<p>
+  <img src="docs/screenshots/home-desktop-dark.png" width="49%" alt="Home: paste a link">
+  <img src="docs/screenshots/timeline-live-desktop-dark.png" width="49%" alt="Live agent timeline">
+</p>
+<p>
+  <img src="docs/screenshots/verdict-chimp-token-promo-desktop-dark.png" width="49%" alt="Caution verdict with evidence">
+  <img src="docs/screenshots/scan-results-desktop-dark.png" width="49%" alt="Scan: NOW / NEXT / PARK">
+</p>
+
+The UI has six main pieces:
+
+- **Live agent timeline.** `/api/analyze` streams progress events (NDJSON) for each step: Tavily fetch → Nemotron 3.5 Lightning extraction → eligibility → red-flag rules → Nemotron 3 Ultra verdict. The final result is identical to the non-streamed one.
+- **Verdict reveal.** It shows a plain-language sentence, the Apply / Caution / Avoid badge (icon + text, so colour is never the only signal), and a display-only *trust score* gauge. The score is 100 minus flag penalties, clamped into the verdict's band. It never changes a verdict.
+- **Evidence cards.** Each red flag comes with its quote highlighted and a link to the source.
+- **Scan board.** NOW / NEXT / PARK shows as columns on desktop and as tabs on mobile. PARK is grouped by reason.
+- **Look and feel.** Dark and light themes follow `prefers-color-scheme`, with a toggle. Animations are CSS-only and switch off with `prefers-reduced-motion`. Shortcuts: `Enter` analyzes, `⌘K` / `Ctrl+K` focuses the link field, `Esc` closes.
+- **Lighthouse (production build):** performance 97–100, accessibility 100 and best practices 100 on every page, mobile and desktop.
+
+All 57 screenshots (every page × desktop/mobile × dark/light, plus a verdict for each demo case) are in [`docs/screenshots`](docs/screenshots). Regenerate them with `npm run screenshots -- <base-url>`.
+
 ### Scan pipeline
 
 ```

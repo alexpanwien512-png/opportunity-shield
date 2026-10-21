@@ -1,14 +1,171 @@
 @import "tailwindcss";
 
+/* Theme is chosen by data-theme on <html> (set before paint by the inline script in layout.tsx). */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+:root,
+[data-theme="light"] {
+  --bg: #f6f7f9;
+  --surface: #ffffff;
+  --surface-2: #f1f3f7;
+  --line: #e3e6ec;
+  --line-strong: #cdd2db;
+  --grid: rgb(15 23 42 / 0.045);
+  --text: #0f172a;
+  --muted: #4b5568;
+  --faint: #8a93a5;
+  --brand: #0f766e;
+  --brand-soft: rgb(15 118 110 / 0.1);
+  --apply: #047857;
+  --apply-soft: rgb(4 120 87 / 0.09);
+  --caution: #b45309;
+  --caution-soft: rgb(180 83 9 / 0.09);
+  --avoid: #be123c;
+  --avoid-soft: rgb(190 18 60 / 0.08);
+  --marker: rgb(253 224 71 / 0.55);
+  --shadow: 0 1px 2px rgb(15 23 42 / 0.04), 0 8px 24px -12px rgb(15 23 42 / 0.12);
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --bg: #0a0f1c;
+  --surface: #0f1729;
+  --surface-2: #141e33;
+  --line: rgb(148 163 184 / 0.13);
+  --line-strong: rgb(148 163 184 / 0.24);
+  --grid: rgb(148 163 184 / 0.05);
+  --text: #e6eaf2;
+  --muted: #9aa5b8;
+  --faint: #66728a;
+  --brand: #2dd4bf;
+  --brand-soft: rgb(45 212 191 / 0.1);
+  --apply: #34d399;
+  --apply-soft: rgb(52 211 153 / 0.1);
+  --caution: #fbbf24;
+  --caution-soft: rgb(251 191 36 / 0.1);
+  --avoid: #fb7185;
+  --avoid-soft: rgb(251 113 133 / 0.1);
+  --marker: rgb(250 204 21 / 0.26);
+  --shadow: 0 1px 0 rgb(255 255 255 / 0.03) inset, 0 12px 32px -16px rgb(0 0 0 / 0.6);
+  color-scheme: dark;
+}
+
 @theme inline {
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-brand: var(--brand);
+  --color-brand-soft: var(--brand-soft);
+  --color-apply: var(--apply);
+  --color-apply-soft: var(--apply-soft);
+  --color-caution: var(--caution);
+  --color-caution-soft: var(--caution-soft);
+  --color-avoid: var(--avoid);
+  --color-avoid-soft: var(--avoid-soft);
+}
+
+html {
+  background: var(--bg);
+  color: var(--text);
 }
 
 body {
   font-family: var(--font-geist-sans), system-ui, sans-serif;
+  background:
+    linear-gradient(var(--grid) 1px, transparent 1px) 0 0 / 32px 32px,
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px) 0 0 / 32px 32px,
+    var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Numbers never jump while animating. */
+.num {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
 }
 
 ::selection {
-  background: rgb(16 185 129 / 0.25);
+  background: var(--brand-soft);
 }
+
+/* Fields inside a container that draws its own focus ring opt out with data-own-ring on the field. */
+:focus-visible:not([data-own-ring]) {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+.surface {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+
+/* Highlighter-pen evidence: the marker sweeps in left to right. */
+.marker {
+  background-image: linear-gradient(transparent 55%, var(--marker) 55%);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  animation: marker-in 700ms 200ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+@keyframes marker-in {
+  from { background-size: 0% 100%; }
+  to { background-size: 100% 100%; }
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
+}
+.rise { animation: rise 480ms cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+
+@keyframes pop {
+  0% { opacity: 0; transform: scale(0.85); }
+  70% { opacity: 1; transform: scale(1.04); }
+  100% { transform: scale(1); }
+}
+.pop { animation: pop 420ms 120ms cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+
+@keyframes breathe {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 1; }
+}
+@keyframes pulse-ring {
+  0% { transform: scale(0.8); opacity: 0.6; }
+  100% { transform: scale(1.9); opacity: 0; }
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.spin { animation: spin 0.9s linear infinite; }
+
+@keyframes shimmer {
+  from { background-position: -200% 0; }
+  to { background-position: 200% 0; }
+}
+.shimmer {
+  background: linear-gradient(90deg, transparent, var(--brand-soft), transparent) 0 0 / 200% 100%;
+  animation: shimmer 1.6s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+  }
+}
+
+/* Gauge ring fills from empty to its value (dashoffset set inline, start via --gauge-c). */
+@keyframes gauge-fill {
+  from { stroke-dashoffset: var(--gauge-c); }
+}
+.gauge-arc { animation: gauge-fill 900ms 150ms cubic-bezier(0.2, 0.7, 0.2, 1) both; }
