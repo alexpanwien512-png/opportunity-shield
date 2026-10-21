@@ -10,7 +10,8 @@
     "test": "vitest run",
     "capture": "node --env-file-if-exists=.env --import tsx scripts/capture-fixtures.mts",
     "models": "node --env-file-if-exists=.env --import tsx scripts/list-models.mts",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "warm": "node --import tsx scripts/warm.mts"
   },
   "dependencies": {
     "@tavily/core": "^0.7.14",

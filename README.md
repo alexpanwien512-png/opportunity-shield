@@ -138,6 +138,12 @@ npm run capture        # live: re-runs all cases against GitHub/Superteam/Devpos
 | [$CHIMP thread](https://superteam.fun/earn/listing/chimp-on-metaplex): token sale promo, unverified sponsor, 242 submissions for 14 prizes, prize pool cut 2,000 → 500 USDC after publication | CAUTION |
 | [Nebius x NVIDIA Global AI Hackathon](https://nebiusglobalaihackathon.devpost.com) | APPLY |
 
+## Deploy, demo and feedback
+
+- [DEPLOY.md](DEPLOY.md) covers the Docker image built by GitHub Actions, the Nebius Serverless AI endpoint (recommended), Render and Railway.
+- [VIDEO_SCRIPT.md](VIDEO_SCRIPT.md) is the 3-minute demo script.
+- [FEEDBACK.md](FEEDBACK.md) holds my notes on Token Factory, Nemotron and Tavily, written while building.
+
 ## License
 
 [MIT](LICENSE)
