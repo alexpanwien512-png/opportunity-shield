@@ -11,7 +11,12 @@
 
 Built for the **Nebius x NVIDIA Global AI Hackathon** (track: Personal AI).
 
-> Status: MVP. "Analyze URL" works end-to-end on the 7 real demo cases, and the tests pass. Scan (NOW / NEXT / PARK), persistent memory and the profile page come next.
+It has four parts:
+
+- **Analyze:** paste any listing and get APPLY / CAUTION / AVOID, with quoted evidence, eligibility, the real prizes per place and expected value per hour.
+- **Scan:** finds open hackathons and bounties on Devpost and Superteam Earn, drops what you can't enter, deep-analyzes the best fits and sorts them into **NOW / NEXT / PARK**.
+- **Memory:** a local SQLite file with your profile, every past verdict, a blacklist of repos and sponsors, and the red-flag rules as editable "skills".
+- **Profile:** residence, citizenship, skills, payout preferences, audience and hourly rate. Eligibility is personal.
 
 ## How it works
 
@@ -33,6 +38,23 @@ URL ─▶ Tavily Extract ──────────┐   page text: every q
                                      • extra flags kept only if their quote is on the page
 ```
 
+### Scan pipeline
+
+```
+Tavily Search (include_domains: superteam.fun / devpost.com, time_range: month)
+  + Devpost & Superteam open-listing feeds
+        ▼
+Deterministic prefilter: closed, expired or region-locked (platform API facts, no LLM)
+        ▼
+Nemotron Lightning triage: ranks the remaining listings by fit with your skills ("when unsure, keep")
+        ▼
+Full analysis on the top N (2 in parallel, streamed to the UI as NDJSON)
+        ▼
+NOW  = APPLY and closes within 3 weeks
+NEXT = APPLY later, or CAUTION with EV ≥ 25% of your hourly rate
+PARK = AVOID, closed, or not worth the hours
+```
+
 ### Where Nemotron, Token Factory and Tavily are used
 
 | Component | Used for | Code |
@@ -41,13 +63,18 @@ URL ─▶ Tavily Extract ──────────┐   page text: every q
 | **Nemotron (fast)** | Extracts prizes per place, cash vs. non-cash, region, preconditions, judging, effort estimate and verbatim quotes. Thinking is disabled. | [`src/lib/shield/llm.ts`](src/lib/shield/llm.ts) `extractFacts` |
 | **Nemotron (reasoning, Ultra)** | Final verdict over profile + facts + flags + EV, with thinking enabled. Capped by the deterministic rule ceiling. | [`src/lib/shield/llm.ts`](src/lib/shield/llm.ts) `judge` |
 | **Tavily Extract** (`advanced`) | The page text every piece of evidence is checked against. Devpost listings also extract `/rules`, whose prize table gives the per-place amounts. | [`src/lib/shield/sources.ts`](src/lib/shield/sources.ts) `fetchSource` |
-| **Tavily Search** | Sponsor reputation checks (scam / rug / presale reports) and, next, discovery for Scan | [`src/lib/shield/sources.ts`](src/lib/shield/sources.ts) `researchSponsor` |
+| **Tavily Search** | Sponsor reputation checks (scam / rug / presale reports), and discovery for Scan | [`sources.ts`](src/lib/shield/sources.ts) `researchSponsor`, [`scan.ts`](src/lib/shield/scan.ts) `discover` |
+| **Nemotron (fast) triage** | Ranks scan candidates against your skills before the costly deep analysis | [`scan.ts`](src/lib/shield/scan.ts) `triage` |
 
 Model IDs are set in `.env` (`NEMOTRON_FAST_MODEL`, `NEMOTRON_REASONING_MODEL`). `npm run models` checks them against `GET /v1/models`.
 
 ### Why hybrid (rules + LLM)?
 
-A bounty scanner that can hallucinate an accusation is useless. Reasoning models also drift: at temperature 0.6, Ultra gave the same listing CAUTION, AVOID and APPLY across runs. In Opportunity Shield the deterministic rules set a verdict ceiling, and the model can only be stricter than that ceiling. A flag shows up only when its quote is actually on the fetched page or comes from a platform API. If Token Factory or Tavily is down, the analysis still returns a rules-only verdict and says so.
+A bounty scanner that can hallucinate an accusation is useless. Reasoning models also drift: at temperature 0.6, Ultra gave the same listing CAUTION, AVOID and APPLY across runs. In one run it also tried to downgrade the Nebius hackathon to CAUTION because "Token Factory" sounded like a token sale. That's why an escalation needs evidence of the right kind:
+
+- a token-promotion claim must match the token-promotion pattern;
+- an unverified-sponsor claim must be confirmed by the platform API;
+- an ineligibility claim must quote a real sentence from the page. In Opportunity Shield the deterministic rules set a verdict ceiling, and the model can only be stricter than that ceiling. A flag shows up only when its quote is actually on the fetched page or comes from a platform API. If Token Factory or Tavily is down, the analysis still returns a rules-only verdict and says so.
 
 ## Red-flag rules
 
@@ -91,6 +118,8 @@ cp .env.example .env   # then fill NEBIUS_API_KEY and TAVILY_API_KEY
 npm run models         # verifies the configured Nemotron model IDs exist on Token Factory
 npm run dev -- -p 3100 # http://localhost:3100
 ```
+
+Memory lives in `data/shield.db` (git-ignored; set `SHIELD_DB_PATH` to move it). An analysis is reused for 6 hours. Click "Re-analyze fresh" to bypass that.
 
 ### Tests
 

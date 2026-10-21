@@ -5187,14 +5187,14 @@
         "kind": "cash"
       }
     ],
-    "paymentMethod": null,
+    "paymentMethod": "100% of bounty received 2-5 days post-reward via Algora (supported countries/regions check required)",
     "judging": [
       "Successful PR merge",
-      "Demo video review",
-      "Code quality assessment"
+      "Demo video provided in PR",
+      "Code quality and adherence to guidelines"
     ],
     "deadline": null,
-    "estimatedHours": 20,
+    "estimatedHours": 48,
     "quotes": [
       {
         "fact": "prizes",
@@ -5219,10 +5219,6 @@
       {
         "fact": "deadline",
         "quote": "deadline: null"
-      },
-      {
-        "fact": "eligibility",
-        "quote": "Make sure you are eligible for payouts https://algora.io/docs/payments#supported-countries-regions"
       }
     ]
   },
@@ -5232,34 +5228,29 @@
       "criterion": "trap_or_bait",
       "quote": "Important: Star the repository https://github.com/SecureBananaLabs/bug-bounty"
     },
-    "summary": "This is a bounty farm disguised as a bug-bounty program. The repository exists solely to harvest stars, issues, and PRs at massive scale (8,435 PRs in 5 months) while paying only one $700 prize. The mandatory star requirement and recursive issue-creation task confirm engagement farming.",
+    "summary": "This is a bounty farm disguised as a bug bounty. The mandatory star requirement, extreme PR volume (8,435 PRs in ~5 months), and hundreds of near-identical rewarded submissions indicate coordinated engagement farming. The $700 prize is real but the expected value is ~$0.20/hour after ~75 competitors.",
     "reasons": [
-      "Repository created 2026-05-16 with 8,435 PRs (~53/day) and 9,986 open issues — volume only explicable as coordinated farming",
-      "Mandatory star requirement ('Important: Star the repository') is explicit engagement farming",
-      "Task is to create more issues recursively, making the repo a self-perpetuating content mill",
-      "75 submissions for a single $700 prize (EV ~$9, $0.50/hr) with identical attempt comments from dozens of accounts",
-      "Payment routed off-platform via Algora.io; sponsor 'SecureBananaLabs' is unverified on GitHub"
+      "Mandatory repository star is engagement farming — a deterministic AVOID signal.",
+      "Repo created May 2026 already has 8,435 PRs (~53/day) and 9,986 open issues, far exceeding any legitimate project scale.",
+      "75 /attempt comments in the first 100 issue comments; hundreds of rewarded PRs follow a repetitive pattern suggesting coordinated/fake submissions.",
+      "Payment routes through Algora with country restrictions; you must verify Austria/Romania eligibility before any payout.",
+      "Expected value is ~$9 total ($0.20/hour) — not worth the 48-hour estimate even if everything works."
     ],
     "eligible": null,
     "additionalFlags": [
       {
-        "label": "Bounty farm repository",
-        "quote": "SecureBananaLabs/bug-bounty",
-        "explanation": "The repository name itself signals its sole purpose: harvesting bounty submissions at scale."
-      },
-      {
-        "label": "Off-platform payment with unverified sponsor",
+        "label": "Off-platform payment with country gate",
         "quote": "100% of the bounty is received 2-5 days post-reward. Make sure you are eligible for payouts https://algora.io/docs/payments#supported-countries-regions",
-        "explanation": "Payment depends on an external service (Algora.io) and a GitHub-unverified sponsor; no on-platform guarantee."
+        "explanation": "Payout is not on GitHub; it requires an Algora account and passes a country filter. If Austria or Romania are unsupported, you cannot collect."
       },
       {
-        "label": "Coordinated low-effort attempt spam",
-        "quote": "I will systematically audit the repository to identify low-hanging fruit bugs, missing features, and improvement opportunities by: 1. Static Analysis... 2. Documentation Gaps... 3. Test Coverage... 4. Issue Creation...",
-        "explanation": "Dozens of accounts post near-identical 'implementation plans' within minutes, indicating bot/coordinated farming."
+        "label": "Mass coordinated reward pattern",
+        "quote": "🟢 @LikeACloud7 | Jun 01, 2026, 12:55:47 AM | #3180 | Reward ... 🟢 @TheGreatAion | Jun 01, 2026, 01:45:48 AM | #3503 | Reward ... (hundreds more)",
+        "explanation": "The issue timeline shows hundreds of green-checkmark rewards in rapid succession, many from accounts with similar naming patterns, indicating a scripted/farmed reward loop rather than genuine review."
       }
     ]
   },
-  "meta:capturedAt": "2026-10-21T10:56:15.229Z",
+  "meta:capturedAt": "2026-10-21T11:22:49.262Z",
   "meta:models": {
     "fast": "nvidia/Nemotron-3_5-Lightning",
     "reasoning": "nvidia/Nemotron-3-Ultra-550b-a55b"

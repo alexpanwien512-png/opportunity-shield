@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { gateVerdict, isVerbatim, quoteFor, runRules, stricter, type RuleContext } from "@/lib/shield/rules";
+import { DEFAULT_RULES, gateVerdict, isVerbatim, quoteFor, runRules, stricter, type RuleContext } from "@/lib/shield/rules";
+import { escalationProven } from "@/lib/shield/analyze";
 import type { PlatformFacts, RedFlag } from "@/lib/shield/types";
 import { DEMO_PROFILE } from "../fixtures/cases";
 
@@ -69,4 +70,23 @@ describe("rules — no false positives on a normal hackathon", () => {
     expect(f?.severity).toBe("low");
   });
   it("Europe-wide listing includes Austria", () => expect(ids(ctx("x", { region: "Europe" }))).not.toContain("region-mismatch"));
+});
+
+describe("escalation proof", () => {
+  const text = "Build on Nebius Token Factory. Join the $CHIMP presale today. Open to high school students aged 14-19 only.";
+  const base = { text, flags: [] as RedFlag[], sponsorVerified: true, rules: DEFAULT_RULES };
+  it("rejects a verbatim but irrelevant quote for token promotion", () =>
+    expect(escalationProven({ criterion: "token_promotion", quote: "Nebius Token Factory" }, base)).toBe(false));
+  it("accepts a quote that matches the token-promotion pattern", () =>
+    expect(escalationProven({ criterion: "token_promotion", quote: "Join the $CHIMP presale today" }, base)).toBe(true));
+  it("needs the platform fact for an unverified sponsor", () => {
+    expect(escalationProven({ criterion: "unverified_sponsor", quote: "Build on Nebius Token Factory" }, base)).toBe(false);
+    expect(escalationProven({ criterion: "unverified_sponsor", quote: "Build on Nebius Token Factory" }, { ...base, sponsorVerified: false })).toBe(true);
+  });
+  it("needs a real sentence for AVOID criteria", () => {
+    expect(escalationProven({ criterion: "user_ineligible", quote: "high school students" }, base)).toBe(false);
+    expect(escalationProven({ criterion: "user_ineligible", quote: "Open to high school students aged 14-19 only." }, base)).toBe(true);
+  });
+  it("rejects quotes that are not on the page", () =>
+    expect(escalationProven({ criterion: "user_ineligible", quote: "Only residents of Mars may enter this contest" }, base)).toBe(false));
 });

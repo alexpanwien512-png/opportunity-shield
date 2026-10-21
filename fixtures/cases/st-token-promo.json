@@ -83,14 +83,14 @@
       "score": 0.45595008
     },
     {
-      "title": "ChimpX AI Raises $2.8 Million Seed Round to Make DeFi Simple for Everyone | Currency News |  Financial and Business News | Markets Insider",
-      "url": "http://markets.businessinsider.com/news/currencies/chimpx-ai-raises-2-8-million-seed-round-to-make-defi-simple-for-everyone-1036082019",
-      "content": "$CHIMP Token\n\nThe $CHIMP token serves as the coordination layer within the ChimpX ecosystem, enabling fee participation, staking, and governance. The token is designed to support sustainable ecosystem growth.\n\nAbout ChimpX\n\nChimpX is building Mojo AI – making DeFi simple for everyone. Users tell Mojo what they want in plain English. Mojo handles everything else. No gas tokens. No fragmented apps. Just done. [...] ChimpX today announced the close of a $2.8 million seed round at a $24 million fully diluted valuation. The round was led by Waterdrip Capital and MetaLabs Ventures, with participation from Mindfulness Capital, NEURALHASH Capital, Marshland Capital, Maven Capital, Attention Venture, and BRINC.Proceeds will be used to expand ChimpX’s core infrastructure, enhance the Mojo AI execution agent, and support the $CHIMP token launch.\n\nThe Problem ChimpX Is Solving [...] Founder Statement\n\n> “Most people who tried DeFi once never came back. Not because DeFi is bad – the protocols are genuinely extraordinary. The experience of using them is just broken. We built ChimpX because we believe that problem is completely solvable. Mojo is the proof.”\n\n> – Akshay Nassa, CEO & Co-Founder, ChimpX\n\n$CHIMP Token",
-      "score": 0.30467278
+      "title": "ChimpX AI | Metaplex",
+      "url": "https://www.metaplex.com/token/8pf4Y6C2oJnzsHZzqcH2xkQStELTvPD2HyABpfCfPLEX",
+      "content": "A Launch Pool is a token sale mechanism designed for organic price discovery and limited sniping or front running. Here's how it works: [...] ChimpX AI | Metaplex\n\nMetaplex\n\n Home\n Pulse\n Trending\n Watchlist\n AgentsBeta\n\n Developers\n Support\n Twitter\n Discord\n\nFor Founders\n\nChimpX AI\n\n# ChimpX AI\n\nCHIMP··Superchimp\n\nSuperchimp·\n\nToken audit\n\nMint authority disabledYes\n\nFreeze authority disabledYes\n\n## Sale Terms\n\nSale Type\n\nLaunch Pool\n\nTokens to Be Sold\n\n75M / 1B\n\nSale Date\n\nOct 12, 2026\n\nSale Duration\n\n2 days\n\nGraduation Minimum\n\n25,000 USDC\n\nSoft Cap\n\n250,000 USDC\n\nLiquidity Pool\n\n40% of sale proceeds\n\n## Overview [...] Metaplex.com is operated by Metaplex Global as a user interface for interacting with decentralized protocols. Token launches are conducted by independent third parties, and Metaplex Global does not issue or endorse tokens. Participation is subject to the Terms of Use.",
+      "score": 0.40457857
     },
     {
       "title": "ChimpX AI Raises $2.8 Million Seed Round to Make DeFi Simple for Everyone | Currency News |  Financial and Business News | Markets Insider",
-      "url": "https://markets.businessinsider.com/news/currencies/chimpx-ai-raises-2-8-million-seed-round-to-make-defi-simple-for-everyone-1036082019",
+      "url": "http://markets.businessinsider.com/news/currencies/chimpx-ai-raises-2-8-million-seed-round-to-make-defi-simple-for-everyone-1036082019",
       "content": "$CHIMP Token\n\nThe $CHIMP token serves as the coordination layer within the ChimpX ecosystem, enabling fee participation, staking, and governance. The token is designed to support sustainable ecosystem growth.\n\nAbout ChimpX\n\nChimpX is building Mojo AI – making DeFi simple for everyone. Users tell Mojo what they want in plain English. Mojo handles everything else. No gas tokens. No fragmented apps. Just done. [...] ChimpX today announced the close of a $2.8 million seed round at a $24 million fully diluted valuation. The round was led by Waterdrip Capital and MetaLabs Ventures, with participation from Mindfulness Capital, NEURALHASH Capital, Marshland Capital, Maven Capital, Attention Venture, and BRINC.Proceeds will be used to expand ChimpX’s core infrastructure, enhance the Mojo AI execution agent, and support the $CHIMP token launch.\n\nThe Problem ChimpX Is Solving [...] Founder Statement\n\n> “Most people who tried DeFi once never came back. Not because DeFi is bad – the protocols are genuinely extraordinary. The experience of using them is just broken. We built ChimpX because we believe that problem is completely solvable. Mojo is the proof.”\n\n> – Akshay Nassa, CEO & Co-Founder, ChimpX\n\n$CHIMP Token",
       "score": 0.30467278
     }
@@ -139,7 +139,7 @@
         "place": "x20 (Bonus)",
         "amount": null,
         "currency": null,
-        "kind": "other"
+        "kind": "credits"
       }
     ],
     "paymentMethod": null,
@@ -164,7 +164,7 @@
       },
       {
         "fact": "deadline",
-        "quote": "WINNER ANNOUNCEMENT BY October 21, 2026 - as scheduled by the sponsor."
+        "quote": "October 21, 2026 - as scheduled by the sponsor."
       },
       {
         "fact": "judging",
@@ -173,35 +173,54 @@
       {
         "fact": "preconditions",
         "quote": "No price predictions or words like \"10x\". No promised returns. No pressure like \"last chance\". No partners, backers, listings or numbers that are not on our official links."
+      },
+      {
+        "fact": "eligibility",
+        "quote": "Participation in this bounty is entirely voluntary. Bounties are a way to learn and dabble in opportunities to build in web3. These are neither full time jobs nor project based engagement. Please be advised that the sponsors will not have time for individualized feedback due to the number of entries they receive."
       }
     ]
   },
   "llm:verdict": {
     "verdict": "CAUTION",
     "escalation": null,
-    "summary": "This bounty pays real USDC and you are eligible, but it carries multiple material risks: the task is explicit token-sale promotion, the sponsor is unverified, judging includes engagement metrics, and the listing has been substantially edited (prize pool cut from 2,000 to 500 USDC, launch platform changed from Metaplex to Raydium). Expect high competition (242 entries for 14 prizes) and low expected value (~$0.30/hr).",
+    "summary": "This bounty pays real USDC and you are eligible, but it carries several material risks: the sponsor is unverified, the task is explicitly promotional for a token sale, the prize pool was cut from $2,000 to $500 after publication, and judging includes social engagement which disadvantages smaller accounts.",
     "reasons": [
-      "Token/presale promotion: the task requires writing a thread that 'explains the $CHIMP sale and gives readers honest reasons to take part' — direct marketing of a token launch.",
-      "Unverified sponsor: ChimpX is not verified on the platform (sponsorVerified=false).",
-      "Engagement-based judging: 'Engagement: Likes and reposts count, but quality comes first.'",
-      "Listing edited after publication: title changed from 'Metaplex' to 'Fair Launch' and prize pool reduced from 2,000 to 500 USDC (snapshotChanges).",
-      "High competition: 242 submissions for only 14 prizes (platform facts)."
+      "Sponsor ChimpX is not verified on the platform.",
+      "The task requires writing a promotional thread for the $CHIMP token sale (token/presale promotion).",
+      "The live listing shows a $500 prize pool while the earlier snapshot showed $2,000 — a 75% reduction after publication.",
+      "Judging criteria include 'Engagement: Likes and reposts count', which favors accounts with larger followings; you have ~300 followers.",
+      "242 submissions compete for only 14 prizes, making the expected value very low (~$2)."
     ],
     "eligible": true,
     "additionalFlags": [
       {
-        "label": "Prize pool reduced 75% after publication",
-        "quote": "Prize pool: 500",
-        "explanation": "Live listing shows 500 USDC total; snapshot showed 2,000 USDC. The sponsor cut the prize pool dramatically after the listing went live."
+        "label": "Unverified sponsor",
+        "quote": "sponsor \"ChimpX\": isVerified=false",
+        "explanation": "The sponsor has no verification badge, so there is no platform-backed assurance they will pay or judge fairly."
       },
       {
-        "label": "Launch platform changed from Metaplex to Raydium",
-        "quote": "the $CHIMP is having a FAIR launching on Raydium",
-        "explanation": "Snapshot described a Metaplex Bootstrap sale; live listing now says Raydium. The task requirements (tagging @Raydium vs @metaplex) changed accordingly."
+        "label": "Token / presale promotion",
+        "quote": "Write a thread on $CHIMP Fair Launch - Part 1",
+        "explanation": "The entire task is to create marketing content for a token sale, which is a conflict of interest and may violate advertising disclosure rules."
+      },
+      {
+        "label": "Terms edited after publication",
+        "quote": "Prize pool: 500",
+        "explanation": "The snapshot recorded a 2,000 USDC prize pool; the live API now shows 500 USDC, a 75% cut after the listing went live."
+      },
+      {
+        "label": "Judged on engagement",
+        "quote": "Engagement: Likes and reposts count, but quality comes first.",
+        "explanation": "Social metrics are part of the scoring, putting creators with smaller audiences at a structural disadvantage."
+      },
+      {
+        "label": "High competition for low prize pool",
+        "quote": "242 submissions, 14 prizes",
+        "explanation": "With 242 entries chasing 14 prizes worth $500 total, the expected value per entry is roughly $2, far below your $40/hour rate."
       }
     ]
   },
-  "meta:capturedAt": "2026-10-21T10:56:57.703Z",
+  "meta:capturedAt": "2026-10-21T11:23:44.176Z",
   "meta:models": {
     "fast": "nvidia/Nemotron-3_5-Lightning",
     "reasoning": "nvidia/Nemotron-3-Ultra-550b-a55b"

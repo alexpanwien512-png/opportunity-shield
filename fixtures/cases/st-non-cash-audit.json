@@ -75,55 +75,55 @@
   "http:https://superteam.fun/api/listings/e3bcf553-958f-4b26-8c1b-799476ceb873/submission-count": 79,
   "tavily:search:\"Vaultline Security\" scam OR presale OR token launch OR complaints||": [
     {
+      "title": "Token pre-sale scams | MetaMask Help Center",
+      "url": "https://support.metamask.io/stay-safe/protect-yourself/tokens-and-transactions/token-pre-sale-scams",
+      "content": "# Token pre-sale scams\n\nToken pre-sales are periods during which organisations offer quantities of new tokens for investors to buy early. The 'pre' references the fact that these sales typically come before the actual sale — generally referred to as an initial coin offering, or ICO.\n\nwarning\n\n#### Not financial advice​ [...] Verify the pre-sale is being offered on a legitimate site. Mistaking a scam for a real site is one of the main ways this attack rears its head. Always double-check the URL before you make any transactions. Check the social channels of any project/organization to make sure you follow the correct link. \"to\": \"/stay-safe/safety-in-web3/what-is-a-token-approval\" [...] One of the main tactics scammers employ to get around your cynicism is by capitalizing on hype. Often, the scam token will be associated with a big name, whether directly associated with web3 or not. A brief web search will tell you that scammers have repeatedly tried to create a buzz around a purported Amazon token. What they want you to think is clearly: why wouldn't you want to get in early on a token launched by one of the world's biggest retailers?!",
+      "score": 0.3132417
+    },
+    {
       "title": "Crypto Scam Tracker",
       "url": "https://dfpi.ca.gov/consumers/crypto/crypto-scam-tracker",
-      "content": "|    | A California resident reports meeting Lydia through a chat app, who claimed to work for a financial company. Lydia encouraged the victim to open an account at thrivefin.ai which later changed to TLNvault.com and subsequently, tlnprime.com and deposit funds to earn profits. The victim did so, but now is unable to recover their funds, and the website is no longer operational. All told, the victim lost $359,714 on the platform. The domain,  has been seized by the FBI and U.S. Department of [...] | Primary Subject | Complaint Narrative | Scam Type | Website | Screenshot |\n ---  --- [...] The scams in this tracker are based on consumer complaints. They represent descriptions of losses incurred in transactions that complainants have identified as part of a fraudulent or deceptive operation. The DFPI has not verified the losses reported by complainants. As new scams emerge, the DFPI will update this list on an ongoing basis to alert and protect the public. If you hear about a scam that is not listed here, please let us know by submitting a complaint.",
-      "score": 0.20663816
+      "content": "| Primary Subject | Complaint Narrative | Scam Type | Website | Screenshot |\n ---  --- [...] The scams in this tracker are based on consumer complaints. They represent descriptions of losses incurred in transactions that complainants have identified as part of a fraudulent or deceptive operation. The DFPI has not verified the losses reported by complainants. As new scams emerge, the DFPI will update this list on an ongoing basis to alert and protect the public. If you hear about a scam that is not listed here, please let us know by submitting a complaint. [...] Submit a Complaint\n\nExplore Consumers\n\n   Regulated Industries",
+      "score": 0.15699492
+    },
+    {
+      "title": "Best Crypto Presales in 2026 — Editorial Reviews",
+      "url": "https://cryptoslate.com/best-presales",
+      "content": "Our Methodology How we rate crypto presales\n\nCrypto presales are early-stage token sales that happen before an exchange listing or wider distribution. They can offer early pricing, but they also come with higher risk—terms can change, liquidity may be limited after launch, and scams are common. [...] Presale crypto is high risk: terms can change, audits may be missing, and liquidity after launch isn’t guaranteed. Only use official links, verify the network/contract where applicable, and never spend more than you can afford to lose.\n\n   Where to buy presale crypto? [...] You usually connect your wallet on the official presale page, select a supported payment token, confirm the correct network, and approve the transaction. Save the TXID and note the claim/vesting rules; for the full walkthrough, see the “How to Buy Presale Crypto” section above.\n\n   What are common crypto presale scams?",
+      "score": 0.15254943
+    },
+    {
+      "title": "What To Know About Cryptocurrency and Scams | Consumer Advice",
+      "url": "https://consumer.ftc.gov/articles/what-know-about-cryptocurrency-scams",
+      "content": "Before you invest in crypto, search online for the name of the company or person and the cryptocurrency name, plus words like “review,” “scam,” or “complaint.” See what others are saying. And read more about other common investment scams.\n\nBusiness, government, and job impersonators  \n  \nIn a business, government, or job impersonator scam, the scammer pretends to be someone you trust to convince you to send them money by buying and sending cryptocurrency. [...] Never pay a fee to get a job. If someone asks you to pay upfront for a job or says to buy cryptocurrency as part of your job, it’s a scam.",
+      "score": 0.14382415
     },
     {
       "title": "Bitcoin Everlight Reports Phase 5 Presale Progress and Reinforces Pre-Launch Security Framework | Markets Insider",
       "url": "https://markets.businessinsider.com/news/stocks/bitcoin-everlight-reports-phase-5-presale-progress-and-reinforces-pre-launch-security-framework-1036015267",
       "content": "Legal Disclaimer: This media platform provides the content of this article on an \"as-is\" basis, without any warranties or representations of any kind, express or implied. We assume no responsibility for any inaccuracies, errors, or omissions. We do not assume any responsibility or liability for the accuracy, content, images, videos, licenses, completeness, legality, or reliability of the information presented herein. Any concerns, complaints, or copyright issues related to this article should [...] The company stated that its smart contract infrastructure underwent independent audits conducted by Spywolf and Solidproof prior to the launch of the presale. In addition, team verification processes were completed through Spywolf KYC and VitalBlock. According to Bitcoin Everlight, these steps were finalized and made publicly accessible before user deposits were accepted. [...] their own research and consult with a qualified financial advisor before making any investment decisions. However, due to the inherently speculative nature of the blockchain sector—including cryptocurrency, NFTs, and mining—complete accuracy cannot always be guaranteed.Neither the media platform nor the publisher shall be held responsible for any fraudulent activities, misrepresentations, or financial losses arising from the content of this press release. In the event of any legal claims or",
       "score": 0.12729444
-    },
-    {
-      "title": "Bitcoin Munari Confirms December 28 as Official Token Launch Date While 48 Hours Left for Final Presale Round | Markets Insider",
-      "url": "https://markets.businessinsider.com/news/stocks/bitcoin-munari-confirms-december-28-as-official-token-launch-date-while-48-hours-left-for-final-presale-round-1035665054",
-      "content": "their own research and consult with a qualified financial advisor before making any investment decisions. However, due to the inherently speculative nature of the blockchain sector—including cryptocurrency, NFTs, and mining—complete accuracy cannot always be guaranteed.Neither the media platform nor the publisher shall be held responsible for any fraudulent activities, misrepresentations, or financial losses arising from the content of this press release. In the event of any legal claims or [...] An additional 29% of supply is reserved for validator rewards and network security, released gradually over a ten-year schedule. Remaining allocations are designated for liquidity provisioning, the core development team under time-based vesting, and ecosystem growth initiatives. No inflationary issuance mechanisms are included.\n\nValidator Participation Defines Post-Launch Activity [...] Legal Disclaimer: This media platform provides the content of this article on an \"as-is\" basis, without any warranties or representations of any kind, express or implied. We assume no responsibility for any inaccuracies, errors, or omissions. We do not assume any responsibility or liability for the accuracy, content, images, videos, licenses, completeness, legality, or reliability of the information presented herein. Any concerns, complaints, or copyright issues related to this article should",
-      "score": 0.11833437
-    },
-    {
-      "title": "Public Awareness: Investment Scam",
-      "url": "https://hamiltonpolice.on.ca/news/public-awareness-investment-scam",
-      "content": "Remember that being cautious and conducting due diligence can go a long way in protecting your financial well-being and avoiding investment scams.\n\nIf you have been a victim of a cryptocurrency investment scam and suffered a financial loss, please report the incident online at  or call our non-emergency number at 905-546-4925. [...] If you were contacted about this type of scam but did not experience a financial loss, please contact the Canadian Anti-Fraud Centre at 1-888-495-8501 or visit www.antifraudcentre-centreantifraude.ca.\n\nFor more information about scams and frauds, including cryptocurrency investment scams, in a variety of languages, please visit:\n\nEarlier news\n\nMore recent news\n\n03\n\nOct\n\n2024\n\n|  12:05 America/New\\_York\n\n### Unsanctioned Social Gatherings and Nuisance Parties 03\n\nOct\n\n2024 [...] Use Secure and Reputable Platforms: If you're investing in cryptocurrency, use reputable cryptocurrency exchanges and wallets. Beware of fake or phishing websites.\n Don't Send Money to Unknown Parties: Never send money to an unknown person or entity without thoroughly verifying their legitimacy.\n Seek Professional Advice: Consult with a qualified financial advisor before making any significant investments.",
-      "score": 0.11229818
-    },
-    {
-      "title": "Asentum Announces $ASE Token Presale Ahead of Post-quantum Mainnet Release | Markets Insider",
-      "url": "https://markets.businessinsider.com/news/stocks/asentum-announces-ase-token-presale-ahead-of-post-quantum-mainnet-release-1036101450",
-      "content": "London, UK, May 04, 2026 (GLOBE NEWSWIRE) -- Asentum , a next-generation Layer-1 blockchain built from the ground up with post-quantum security, today announced the official launch of its native token presale for $ASE. The presale is scheduled to begin on May 4 at 16:00 CET , marking a key milestone as the network transitions from active testnet development toward mainnet. [...] “From the beginning, the focus has been on building a system that works under real conditions,” said the Asentum team. “The presale is not the starting point—it follows a phase where core components of the network have already been deployed and tested.” [...] and assume all associated risks. Neither the media platform nor the publisher shall be held responsible for any fraudulent activities, misrepresentations, or financial losses arising from the content of this press release.",
-      "score": 0.10681186
     }
   ],
   "llm:extraction": {
     "title": "Vaultline Security Audit Grants for Colosseum Projects: Up to 4,000 USDC Each",
     "sponsor": "Vaultline Security",
-    "taskSummary": "Submit a security audit application for a Solana project from the Colosseum Hackathon to receive a fully covered or discounted Vaultline security audit worth up to 4,000 USDC.",
+    "taskSummary": "Selected Colosseum Hackathon teams receive a Vaultline security audit, either fully covered or at a significant discount, based on a custom quote up to 4,000 USDC in audit services.",
     "taskCategory": "security",
     "online": true,
     "regionRestriction": "Global",
     "eligibilityNotes": [
       "Solana projects that took part in the Colosseum Hackathon",
-      "The codebase is feature-complete or close to it",
+      "The codebase is feature-complete or close to it so audit scope won't change significantly",
       "The code is in a repository Vaultline can access",
       "The team can respond to findings and implement fixes after the audit",
       "The team is prepared to cover any remaining cost if their quote exceeds the grant amount"
     ],
     "preconditions": [
-      "The codebase is feature-complete or close to it, so audit scope won't change significantly",
-      "The code is in a repository Vaultline can access",
-      "The team can respond to findings and implement fixes after the audit",
-      "The team is prepared to cover any remaining cost if their quote exceeds the grant amount"
+      "Must have participated in the Colosseum Hackathon",
+      "Codebase must be feature-complete or close to it",
+      "Code must be in a repository Vaultline can access",
+      "Team must be prepared to cover remaining costs if quote exceeds grant amount"
     ],
     "prizes": [
       {
@@ -210,7 +210,7 @@
       },
       {
         "fact": "eligibility",
-        "quote": "Solana projects that took part in the Colosseum Hackathon and meet these conditions: The codebase is feature-complete or close to it, so audit scope won't change significantly."
+        "quote": "Solana projects that took part in the Colosseum Hackathon and meet these conditions:"
       },
       {
         "fact": "preconditions",
@@ -233,10 +233,6 @@
         "quote": "Each grant is worth up to 4,000 USDC in audit services, applied directly to a Vaultline audit. It is not paid out as cash."
       },
       {
-        "fact": "prizes",
-        "quote": "10 audit grants, each worth up to 4,000 USDC in Vaultline audit services. Final grant value is based on each project's custom quote."
-      },
-      {
         "fact": "judging",
         "quote": "Project potential: How impactful and innovative is the project within the Solana ecosystem?"
       },
@@ -256,34 +252,34 @@
       "criterion": "prize_not_money",
       "quote": "Each grant is worth up to 4,000 USDC in audit services, applied directly to a Vaultline audit. It is not paid out as cash."
     },
-    "summary": "The prize is audit services, not withdrawable cash, which makes this a non-money opportunity. You also need an existing Colosseum Hackathon Solana project to qualify.",
+    "summary": "This grant pays in audit services, not withdrawable cash, so you cannot receive USDC or fiat. You also must have a Colosseum Hackathon project, which your profile doesn't show.",
     "reasons": [
-      "Prize is audit services worth up to 4,000 USDC, explicitly not paid out as cash.",
-      "Only Solana projects that participated in the Colosseum Hackathon are eligible.",
-      "Sponsor is unverified on the platform.",
-      "You would need to cover any audit costs exceeding the grant amount.",
-      "Expected value is effectively $0 because the reward is not liquid currency."
+      "The prize is audit services up to 4,000 USDC, not paid out as cash (verbatim: 'Each grant is worth up to 4,000 USDC in audit services, applied directly to a Vaultline audit. It is not paid out as cash.').",
+      "Only teams that participated in the Colosseum Hackathon are eligible; your profile doesn't indicate participation.",
+      "The sponsor is unverified on the platform (sponsorVerified: false).",
+      "The grant may not cover the full audit cost; you must cover any remaining cost if the quote exceeds the grant amount.",
+      "Selection criteria are subjective (project potential, audit need, readiness) with no transparent scoring."
     ],
     "eligible": false,
     "additionalFlags": [
       {
-        "label": "Prize in services, not cash",
+        "label": "Prize in credits, services or discount",
         "quote": "Each grant is worth up to 4,000 USDC in audit services, applied directly to a Vaultline audit. It is not paid out as cash.",
-        "explanation": "The reward is a discount on Vaultline's audit services, not USDC you can withdraw or convert to fiat."
-      },
-      {
-        "label": "Requires existing Colosseum project",
-        "quote": "Solana projects that took part in the Colosseum Hackathon and meet these conditions:",
-        "explanation": "You must already have a project submitted to the Colosseum Hackathon; this is not a build-from-scratch bounty."
+        "explanation": "The reward is a service credit, not withdrawable money, so it cannot be paid out as USDC or fiat."
       },
       {
         "label": "Unverified sponsor",
         "quote": "sponsor \"Vaultline Security\": isVerified=false",
-        "explanation": "The sponsor's identity has not been verified by the platform, adding counterparty risk."
+        "explanation": "The sponsor is not verified on the platform, increasing risk of non-delivery or disputes."
+      },
+      {
+        "label": "Requires an existing project",
+        "quote": "Solana projects that took part in the Colosseum Hackathon and meet these conditions:",
+        "explanation": "You must have a project that participated in the Colosseum Hackathon; your profile shows no evidence of that."
       }
     ]
   },
-  "meta:capturedAt": "2026-10-21T10:56:42.966Z",
+  "meta:capturedAt": "2026-10-21T11:23:24.606Z",
   "meta:models": {
     "fast": "nvidia/Nemotron-3_5-Lightning",
     "reasoning": "nvidia/Nemotron-3-Ultra-550b-a55b"

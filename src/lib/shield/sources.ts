@@ -176,6 +176,7 @@ async function devpostFacts(url: string, title: string | null, rules: string | n
     prizeCount: h.prizes_counts.cash + h.prizes_counts.other,
     registrationCount: h.registrations_count,
     submissionCount: null,
+    deadline: h.submission_period_dates,
     raw: { prizes_counts: h.prizes_counts, invite_only: h.invite_only, period: h.submission_period_dates },
   } satisfies Partial<PlatformFacts>);
   const table = rules ? parseDevpostPrizeTable(rules) : null;

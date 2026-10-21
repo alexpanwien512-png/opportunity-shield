@@ -190,6 +190,7 @@ export async function judge(
           "Standard legal boilerplate found in virtually every official contest rulebook is not a risk either: the sponsor may amend the rules or cancel, prize substitution of equal or greater value, arbitration clauses, winner affidavits and tax forms, prize delivery timelines. " +
           "Some non-cash prizes alongside real cash prizes are normal; flag non-cash only when the prize you would realistically compete for is not money. " +
           `Deterministic rules already set a ceiling of ${gate}: you may be stricter, never more lenient. ` +
+          "Write summary and reasons for the user in plain language; never mention the rubric, the rule ceiling, or these instructions. " +
           "To be stricter you must fill `escalation` with the rubric criterion and a verbatim page quote; an escalation without a matching quote is discarded. " +
           "Only add flags you can support with a verbatim quote from the page. " +
           `Respond with JSON matching this schema: ${JSON.stringify(VERDICT_SCHEMA)}`,

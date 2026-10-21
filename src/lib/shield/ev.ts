@@ -9,10 +9,11 @@ export function expectedValue(bundle: SourceBundle, extraction: Extraction | nul
   const hours = extraction?.estimatedHours && extraction.estimatedHours > 0 ? extraction.estimatedHours : DEFAULT_HOURS[bundle.platform];
   const nonCash = flags.some((fl) => fl.id === "non-cash-prize");
 
+  // Only money counts: credits, services and hardware are excluded from the EV.
   const amounts: number[] = [];
   for (const p of f.prizes ?? []) {
-    if (p.amount == null) continue;
-    const times = Number(p.place.match(/bonus x(\d+)/)?.[1] ?? 1);
+    if (p.amount == null || !(p.kind === "cash" || p.kind === "crypto")) continue;
+    const times = Number(p.place.match(/x(\d+)\)?$/)?.[1] ?? 1);
     for (let i = 0; i < times; i++) amounts.push(p.amount);
   }
   if (!amounts.length && extraction) {
@@ -21,7 +22,9 @@ export function expectedValue(bundle: SourceBundle, extraction: Extraction | nul
 
   const prizeCount = f.prizeCount ?? (amounts.length || null);
   const bestPrizeUsd = amounts.length ? Math.max(...amounts) : null;
-  const meanPrizeUsd = f.totalPrizeUsd && prizeCount ? f.totalPrizeUsd / prizeCount : amounts.length ? amounts.reduce((a, b) => a + b, 0) / amounts.length : null;
+  // Advertised totals can include non-cash perks, so per-place cash wins over the headline number.
+  const cashTotal = amounts.reduce((a, b) => a + b, 0);
+  const meanPrizeUsd = amounts.length && prizeCount ? cashTotal / prizeCount : f.totalPrizeUsd && prizeCount ? f.totalPrizeUsd / prizeCount : null;
 
   let competitors: number | null = f.submissionCount ?? null;
   let competitorsEstimated = false;

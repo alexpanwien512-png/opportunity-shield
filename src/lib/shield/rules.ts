@@ -78,7 +78,7 @@ const REGION_GROUPS: Record<string, string[]> = {
   balkans: ["romania", "bulgaria", "serbia", "croatia", "bosnia", "albania", "north macedonia", "montenegro", "slovenia", "greece"],
 };
 
-function regionIncludes(region: string, country: string): boolean {
+export function regionIncludes(region: string, country: string): boolean {
   const r = region.toLowerCase();
   if (/global|worldwide|anywhere|online/.test(r)) return true;
   if (r.split(/[,/&]| and /).some((part) => sameCountry(part, country))) return true;

@@ -87,15 +87,14 @@
   "llm:extraction": {
     "title": "Travel boost: Create Content for Breakpoint 2026",
     "sponsor": "Superteam Germany",
-    "taskSummary": "Create a social media post on X, Instagram or LinkedIn expressing excitement for Breakpoint 2026, include a CTA link, highlight a Germany/Superteam Germany angle, and Quote Retweet the sponsor's announcement post with correct tags.",
+    "taskSummary": "Create a social media post on X, Instagram or LinkedIn expressing excitement for Breakpoint 2026, include a CTA link, highlight a Germany/Superteam Germany angle, quote retweet Superteam Germany's announcement post, and tag @SolanaEvents and @SuperteamDE.",
     "taskCategory": "content",
     "online": true,
     "regionRestriction": "Germany",
     "eligibilityNotes": [
       "Content must be in English",
-      "Both required tags (@SolanaEvents and @SuperteamDE) must be included",
-      "CTA link must be included",
-      "Must submit both an original post and a Quote Retweet"
+      "Ensure both required tags (@SolanaEvents and @SuperteamDE) are included",
+      "Include the CTA link: https://luma.com/breakpoint2026?tk=HYnlfc"
     ],
     "preconditions": [],
     "prizes": [
@@ -174,7 +173,7 @@
       "Completion of Requirements",
       "Video submissions are favored"
     ],
-    "deadline": null,
+    "deadline": "October 30, 2026",
     "estimatedHours": null,
     "quotes": [
       {
@@ -186,42 +185,44 @@
         "quote": "We will pick 15 winners to receive a travel boost worth 400 USDG each."
       },
       {
-        "fact": "judging",
-        "quote": "Creativity and Engagement: How interesting and engaging is your post?"
+        "fact": "deadline",
+        "quote": "WINNER ANNOUNCEMENT BY October 30, 2026 - as scheduled by the sponsor."
       },
       {
-        "fact": "judging",
-        "quote": "Clarity of Enthusiasm: Does your post clearly show what you're excited about for Breakpoint?"
-      },
-      {
-        "fact": "judging",
-        "quote": "Correct Tags: Have you correctly tagged @SolanaEvents and @SuperteamDE?"
-      },
-      {
-        "fact": "judging",
-        "quote": "Completion of Requirements: Have you submitted both an original post and a QRT?"
-      },
-      {
-        "fact": "judging",
-        "quote": "Video submissions are favored"
+        "fact": "eligibility",
+        "quote": "Content must be in English. Ensure both required tags (@SolanaEvents and @SuperteamDE) are included. Include the CTA link: https://luma.com/breakpoint2026?tk=HYnlfc"
       }
     ]
   },
   "llm:verdict": {
     "verdict": "AVOID",
-    "escalation": null,
-    "summary": "You are not eligible because the bounty is restricted to residents of Germany, and you live in Austria. Even if you were eligible, the prize is paid in USDG (a crypto token) and judging depends on social media engagement, which adds uncertainty.",
+    "escalation": {
+      "criterion": "user_ineligible",
+      "quote": "This listing is only open for people in Germany"
+    },
+    "summary": "You are not eligible because the bounty is restricted to residents of Germany, and you live in Austria. Even if you could enter, the judging relies heavily on social media engagement, which adds unpredictable risk.",
     "reasons": [
-      "Region restriction: 'This listing is only open for people in Germany' — you reside in Austria.",
-      "Prize currency is USDG (crypto), not your preferred fiat or USDC.",
-      "Judging includes 'Creativity and Engagement: How interesting and engaging is your post?' — engagement-based judging favors large audiences.",
-      "Requirement to post on X, Instagram, or LinkedIn and Quote Retweet a specific announcement post.",
-      "Video submissions are favored, adding production effort."
+      "The listing explicitly states it is only open to people in Germany, and your residence is Austria.",
+      "Prizes are paid in USDG (a crypto token), not your preferred fiat or USDC.",
+      "Winners are chosen partly on \"finners are chosen partly on \"Creativity and Engagement,\" meaning outcomes depend on social media algorithms, not just quality.",
+      "The sponsor is verified and the prize pool is real, but the geographic restriction alone makes this a non-starter for you.",
+      "There are 15 prizes for 15 current submissions, but eligibility overrides any expected value."
     ],
     "eligible": false,
-    "additionalFlags": []
+    "additionalFlags": [
+      {
+        "label": "Region restriction excludes you",
+        "quote": "This listing is only open for people in Germany",
+        "explanation": "The bounty is geographically limited to Germany; your profile shows residence in Austria, so you cannot participate."
+      },
+      {
+        "label": "Judging includes engagement metrics",
+        "quote": "Creativity and Engagement: How interesting and engaging is your post?",
+        "explanation": "A portion of the score depends on how much engagement (likes, retweets, etc.) your post receives, which is outside your control and favors accounts with larger followings."
+      }
+    ]
   },
-  "meta:capturedAt": "2026-10-21T10:56:32.695Z",
+  "meta:capturedAt": "2026-10-21T11:23:10.873Z",
   "meta:models": {
     "fast": "nvidia/Nemotron-3_5-Lightning",
     "reasoning": "nvidia/Nemotron-3-Ultra-550b-a55b"

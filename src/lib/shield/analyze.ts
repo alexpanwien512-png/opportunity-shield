@@ -6,6 +6,9 @@ import { DEFAULT_RULES, gateVerdict, isVerbatim, runRules, stricter, type RuleSp
 import { describeEV, expectedValue } from "./ev";
 import type { AnalysisResult, Eligibility, Extraction, Profile, RedFlag, Verdict } from "./types";
 
+/** Bump when rules, prompts or EV logic change: cached analyses from older versions are recomputed. */
+export const PIPELINE_VERSION = 5;
+
 export interface AnalyzeOptions {
   io: IO;
   profile: Profile;
@@ -65,7 +68,8 @@ export async function analyzeUrl(url: string, opts: AnalyzeOptions): Promise<Ana
   let verdict = gate;
   let escalation: AnalysisResult["escalation"] = null;
   if (model && stricter(gate, model.verdict) !== gate) {
-    const proven = !!model.escalation && isVerbatim(model.escalation.quote, bundle.text) && criterionAllows(model.escalation.criterion, model.verdict);
+    const proven = !!model.escalation && criterionAllows(model.escalation.criterion, model.verdict) &&
+      escalationProven(model.escalation, { text: bundle.text, flags: allFlags, sponsorVerified: bundle.facts.sponsorVerified, rules: opts.rules ?? DEFAULT_RULES });
     escalation = { to: model.verdict, criterion: model.escalation?.criterion ?? null, quote: model.escalation?.quote ?? null, accepted: proven };
     if (proven) verdict = model.verdict;
   }
@@ -88,9 +92,11 @@ export async function analyzeUrl(url: string, opts: AnalyzeOptions): Promise<Ana
     gateVerdict: gate,
     modelVerdict: model?.verdict ?? null,
     escalation,
-    summary: model?.summary ?? FALLBACK_SUMMARY[verdict],
-    reasons: model?.reasons ?? allFlags.map((f) => f.explanation),
+    // A rejected escalation means the model's text argues for a verdict we did not accept: don't show it.
+    summary: model && !(escalation && !escalation.accepted) ? model.summary : FALLBACK_SUMMARY[verdict],
+    reasons: model && !(escalation && !escalation.accepted) ? model.reasons : allFlags.filter((f) => f.severity !== "low").map((f) => f.explanation),
     eligibility,
+    deadline: toIsoDate(bundle.facts.deadline) ?? toIsoDate(extraction?.deadline),
     prizes: bundle.facts.prizes?.length ? bundle.facts.prizes : (extraction?.prizes ?? []),
     flags: allFlags.sort((a, b) => SEV[a.severity] - SEV[b.severity]),
     ev,
@@ -98,7 +104,60 @@ export async function analyzeUrl(url: string, opts: AnalyzeOptions): Promise<Ana
     sources: bundle.fetchedWith,
     timingsMs: t,
     analyzedAt: new Date().toISOString(),
+    pipelineVersion: PIPELINE_VERSION,
   };
+}
+
+/** Best-effort: "2026-11-14T18:29:59Z", "October 30, 2026", "Aug 26 - Oct 30, 2026" → ISO date. */
+export function toIsoDate(text: string | null | undefined): string | null {
+  if (!text) return null;
+  const direct = Date.parse(text);
+  if (!Number.isNaN(direct)) return new Date(direct).toISOString();
+  // Ranges keep the end ("Aug 26 - Oct 30, 2026" → "Oct 30, 2026"); trailing prose is ignored.
+  const year = text.match(/\b(20\d\d)\b/)?.[1];
+  const month = text.match(/\b(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\b/i)?.[0];
+  const parts = text.split(/\s[-–—]\s|\bto\b/).map((p) => {
+    let part = p.replace(/\s*\(.*\)$/, "").replace(/\bat\b.*$/, "").trim();
+    // "Oct 16 - 24, 2026": the end has no month; "Oct 16": no year.
+    if (/^\d{1,2}(,|\s|$)/.test(part) && month) part = `${month} ${part}`;
+    if (year && !/\b20\d\d\b/.test(part)) part = `${part}, ${year}`;
+    return part;
+  });
+  // V8's Date.parse is lenient ("as scheduled, 2026" → Jan 1), so only try parts that name a month.
+  for (const part of parts.reverse().filter((p) => /\b(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\b/i.test(p))) {
+    // Date-only text: pin to noon UTC so the calendar day survives any timezone.
+    const parsed = Number.isNaN(Date.parse(`${part} 12:00:00 UTC`)) ? Date.parse(part) : Date.parse(`${part} 12:00:00 UTC`);
+    if (!Number.isNaN(parsed)) return new Date(parsed).toISOString();
+  }
+  return null;
+}
+
+/**
+ * A verbatim quote is necessary but not sufficient ("Nebius Token Factory" is verbatim and proves no token sale).
+ * Each criterion needs evidence of its own kind: a rule pattern match, a platform fact, or a real sentence.
+ */
+export function escalationProven(
+  esc: { criterion: string; quote: string },
+  ctx: { text: string; flags: RedFlag[]; sponsorVerified?: boolean | null; rules: RuleSpec[] },
+): boolean {
+  if (!isVerbatim(esc.quote, ctx.text)) return false;
+  const pattern = (id: string) => {
+    const p = ctx.rules.find((r) => r.id === id)?.params.pattern;
+    return p ? new RegExp(String(p), "i") : null;
+  };
+  switch (esc.criterion) {
+    case "token_promotion":
+      return !!pattern("token-promotion")?.test(esc.quote);
+    case "engagement_judging":
+      return !!pattern("engagement-judging")?.test(esc.quote);
+    case "unverified_sponsor":
+      return ctx.sponsorVerified === false;
+    case "terms_edited":
+      return ctx.flags.some((f) => f.id === "listing-changed");
+    default:
+      // trap_or_bait, unverifiable_or_offplatform_payment, user_ineligible, prize_not_money, unmet_precondition
+      return esc.quote.trim().split(/\s+/).length >= 6;
+  }
 }
 
 const AVOID_CRITERIA = new Set(["trap_or_bait", "unverifiable_or_offplatform_payment", "user_ineligible", "prize_not_money"]);

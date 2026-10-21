@@ -5133,7 +5133,7 @@
     "title": "Technical Poem Generation and Content Creation",
     "sponsor": "algora-pbc",
     "taskSummary": "Add an original poem to the project — theme, form, and tone are entirely your choice. Minimum 3 stanzas, submitted as POEM.md in the project root, with PR description including a one-line note on the creative decision.",
-    "taskCategory": "content",
+    "taskCategory": "other",
     "online": true,
     "regionRestriction": null,
     "eligibilityNotes": [
@@ -5168,52 +5168,63 @@
       },
       {
         "fact": "regionRestriction",
-        "quote": "Make sure you are eligible for payouts. [Make sure you are eligible for payouts](https://algora.io/docs/payments#supported-countries-regions)"
+        "quote": "Make sure you are eligible for payouts (supported countries/regions)"
       },
       {
         "fact": "preconditions",
-        "quote": "1. Start working: Comment /attempt #76 with your implementation plan\n2. Submit work: Create a pull request including /claim #76 in the PR body to claim the bounty\n3. Receive payment: 100% of the bounty is received 2-5 days post-reward."
+        "quote": "Comment /attempt #76 with your implementation plan"
       },
       {
-        "fact": "paymentMethod",
-        "quote": "100% of the bounty is received 2-5 days post-reward."
-      },
-      {
-        "fact": "judging",
-        "quote": "Low quality AI PRs will not receive review and will be closed"
+        "fact": "preconditions",
+        "quote": "Create a pull request including /claim #76 in the PR body to claim the bounty"
       },
       {
         "fact": "deadline",
-        "quote": "deadline: null"
+        "quote": "100% of the bounty is received 2-5 days post-reward"
       }
     ]
   },
   "llm:verdict": {
     "verdict": "AVOID",
     "escalation": null,
-    "summary": "This is a bounty farm disguised as a poetry task: the sponsor explicitly demands you star the repo, the repo has 8,435 PRs in five months (~53/day) and 9,986 open issues, and $430 for a three-stanza poem is an absurd reward. Payment routes through an unverified third-party platform (algora.io) with unknown country eligibility.",
+    "summary": "This is a bounty farm masquerading as a poetry task. The repository demands you star it (engagement farming), pays $430 for a trivial poem via an off-platform service (algora.io), and shows 66+ competitors for a single prize.",
     "reasons": [
-      "Explicit engagement farming: \"Important: Star the repository https://github.com/SecureBananaLabs/bug-bounty\"",
-      "Bounty-farm metrics: repo created 2026-05-16 with 8,435 PRs (~53/day) and 9,986 open issues",
-      "Absurd reward for trivial work: $430 cash for an original poem of minimum 3 stanzas",
-      "Off-platform payment via unverified algora.io with no visibility into supported countries for Austria/Romania",
-      "66 attempts for a single prize indicates a low-yield lottery, not a genuine bounty"
+      "Explicit engagement farming: the listing requires you to 'Star the repository' before participating.",
+      "Off-platform payment through algora.io with undisclosed country eligibility; your residence (Austria) and citizenship (Romania) may not be supported.",
+      "Bounty-farm scale: 66+ attempts recorded for one $430 prize, many appearing to be low-effort or AI-generated submissions.",
+      "Absurd reward-to-effort ratio: $430 for a ~1 hour non-technical poem in a code repository.",
+      "Mandatory demo video and multi-step claim process add friction for a trivial deliverable."
     ],
     "eligible": null,
     "additionalFlags": [
       {
-        "label": "unverified_sponsor",
-        "quote": "sponsorVerified: null",
-        "explanation": "The GitHub sponsor SecureBananaLabs has no verified badge; the actual payout sponsor is algora-pbc (algora.io), also unverified."
+        "label": "Star / follow / fork farming",
+        "quote": "Important: Star the repository https://github.com/SecureBananaLabs/bug-bounty",
+        "explanation": "The listing explicitly requires starring the repo, which is engagement farming and a hallmark of bounty farms."
       },
       {
-        "label": "off_platform_payment",
-        "quote": "100% of the bounty is received 2-5 days post-reward. [Make sure you are eligible for payouts](https://algora.io/docs/payments#supported-countries-regions)",
-        "explanation": "Payment is not on GitHub; it requires an algora.io account and eligibility check, adding opacity and dependency on a third party."
+        "label": "Off-platform payment with eligibility gate",
+        "quote": "100% of the bounty is received 2-5 days post-reward. Make sure you are eligible for payouts (supported countries/regions)",
+        "explanation": "Payment routes through algora.io, not GitHub; the linked eligibility page may exclude Austria or Romania."
+      },
+      {
+        "label": "Disproportionate competition",
+        "quote": "🟢 @AlonePenguin | Jun 01, 2026, 08:11:11 AM | #3393 | [Reward](https://algora.io/claims/o85VNxz3dk7PAguu) ... (66+ rows)",
+        "explanation": "The attempts table shows 66+ claimants for a single prize, indicating a lottery, not a merit-based bounty."
+      },
+      {
+        "label": "AI-generated submission flood",
+        "quote": "Low quality AI PRs will not receive review and will be closed",
+        "explanation": "The maintainers acknowledge a flood of AI-generated poems, confirming the task attracts spam, not genuine work."
+      },
+      {
+        "label": "Absurd reward for trivial task",
+        "quote": "/bounty $430",
+        "explanation": "$430 for a 3-stanza poem is wildly above market rate and signals a farm designed to harvest engagement."
       }
     ]
   },
-  "meta:capturedAt": "2026-10-21T10:56:01.691Z",
+  "meta:capturedAt": "2026-10-21T11:22:24.547Z",
   "meta:models": {
     "fast": "nvidia/Nemotron-3_5-Lightning",
     "reasoning": "nvidia/Nemotron-3-Ultra-550b-a55b"

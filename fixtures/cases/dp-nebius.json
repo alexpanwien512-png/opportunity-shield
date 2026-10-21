@@ -35,7 +35,7 @@
           "cash": 6,
           "other": 4
         },
-        "registrations_count": 25444,
+        "registrations_count": 25447,
         "featured": false,
         "organization_name": "nebius",
         "winners_announced": false,
@@ -60,25 +60,22 @@
     "online": true,
     "regionRestriction": "null",
     "eligibilityNotes": [
-      "Hackathon IS open to Individuals who are at least the age of majority where they reside, Teams of Eligible Individuals, and Organizations (including corporations, not-for-profit corporations and other nonprofit organizations, limited liability companies, partnerships, and other legal entities) that exist and have been organized or incorporated at the time of entry",
-      "Hackathon IS NOT open to: Individuals who are residents of, or Organizations domiciled in, a country, state, province or territory where the laws of the United States or local law prohibits participating or receiving a prize (including, but not limited to, Brazil, Quebec, Russia, Crimea, Cuba, Iran, and North Korea and any other country which is comprehensively sanctioned by the U.S. Treasury's Office of Foreign Assets Control)",
-      "Organizations involved with the design, production, paid promotion, execution, or distribution of the Hackathon, including the Sponsor and Administrator",
-      "Employees, representatives and agents of such Promotion Entities, and all members of their immediate family or household",
-      "Any Judge, or company or individual that employs a Judge",
-      "Any parent company, subsidiary, or other affiliate of any organization described above",
-      "Any other individual or organization whose participation would create a conflict of interest"
+      "Hackathon IS open to Individuals who are at least the age of majority where they reside, Teams of Eligible Individuals, and Organizations",
+      "Hackathon IS NOT open to individuals who are residents of, or Organizations domiciled in, Brazil, Quebec, Russia, Crimea, Cuba, Iran, North Korea, and other U.S. sanctioned countries",
+      "Employees, representatives and agents of Promotion Entities and their immediate family/household are excluded",
+      "Judges, their employers, and affiliates are excluded",
+      "Any individual or organization creating a conflict of interest is excluded"
     ],
     "preconditions": [
-      "Project must run on Nebius Token Factory or Nebius AI Cloud and use at least one NVIDIA open source model",
-      "Project must fit into one of the four hackathon tracks",
-      "Submission must include a URL to a working demo (not required for Physical AI)",
-      "Submission must include a text description",
-      "Submission must include a URL to a public code repository (GitHub, GitLab, or Bitbucket) with open source license",
-      "README with setup instructions and clear guidance for running the project must be included",
-      "Demonstration video less than 3 minutes, uploaded to YouTube",
-      "Must identify which track the submission is for",
-      "Must provide feedback on Nebius Token Factory, AI Cloud and NVIDIA tools, models, or technologies used",
-      "If project existed prior to Submission Period, must explain significant updates made during the period"
+      "Project must run on Nebius Token Factory or Nebius AI Cloud",
+      "Project must use at least one NVIDIA open source model",
+      "Project must fit into one of the four specified tracks",
+      "Submission must include a working demo URL (not required for Physical AI)",
+      "Submission must include public code repository with open source license",
+      "Submission must include README with setup instructions",
+      "Submission must include demonstration video under 3 minutes",
+      "Submission must provide feedback on Nebius tools and NVIDIA models used",
+      "If project existed prior, must explain significant updates during hackathon period"
     ],
     "prizes": [
       {
@@ -149,32 +146,60 @@
       "Potential Impact",
       "Quality of the Idea"
     ],
-    "deadline": "Friday, October 30, 2026 (10:00 am Pacific Time)",
+    "deadline": "2026-10-30T10:00:00Pacific Time",
     "estimatedHours": null,
     "quotes": [
       {
-        "fact": "prizes",
-        "quote": "$50,000 in cash"
-      },
-      {
         "fact": "regionRestriction",
-        "quote": "The Hackathon IS NOT open to: Individuals who are residents of, or Organizations domiciled in, a country, state, province or territory where the laws of the United States or local law prohibits participating or receiving a prize in the Hackathon (including, but not limited to, Brazil, Quebec, Russia, Crimea, Cuba, Iran, and North Korea and any other country which is comprehensively sanctioned by the U.S. Treasury's Office of Foreign Assets Control)"
+        "quote": "The Hackathon IS NOT open to: Individuals who are residents of, or Organizations domiciled in, a country, state, province or territory where the laws of the United States or local law prohibits participating or receiving a prize in the Hackathon (including, but not limited to, Brazil, Quebec, Russia, Crimea, Cuba, Iran, and North Korea and any other country which is comprehensively sanctioned by the U.S. Treasury’s Office of Foreign Assets Control)"
       },
       {
-        "fact": "preconditions",
-        "quote": "Project must run on Nebius Token Factory or Nebius AI Cloud and use at least one NVIDIA open source model"
+        "fact": "prizes",
+        "quote": "Grand Prize: $20,000 USD (1 winner)"
       },
       {
-        "fact": "paymentMethod",
-        "quote": "Prizes will be payable to the Entrant, if an individual; to the Entrant's Representative, if a Team; or to the Organization, if the Entrant is an Organization"
+        "fact": "prizes",
+        "quote": "2nd Place: $10,000 USD (1 winner)"
       },
       {
-        "fact": "judging",
-        "quote": "Entries will be judged on the following equally weighted criteria, and according to the sole and absolute discretion of the judges: Technological Implementation, Design, Potential Impact, Quality of the Idea"
+        "fact": "prizes",
+        "quote": "3rd Place: $6,000 USD (1 winner)"
+      },
+      {
+        "fact": "prizes",
+        "quote": "Coding and Agentic Engineering Track Winner: NVIDIA Jetson Orin Nano (1 winner)"
+      },
+      {
+        "fact": "prizes",
+        "quote": "Best Apps and Agents Track Winner: NVIDIA Jetson Orin Nano (1 winner)"
+      },
+      {
+        "fact": "prizes",
+        "quote": "Personal AI Track Winner: NVIDIA Jetson Orin Nano (1 winner)"
+      },
+      {
+        "fact": "prizes",
+        "quote": "Physical AI Track Winner: NVIDIA Jetson Orin Nano (1 winner)"
+      },
+      {
+        "fact": "prizes",
+        "quote": "Best Use of Tavily: $3,000 USD (1 winner)"
+      },
+      {
+        "fact": "prizes",
+        "quote": "City Winner Awards: $500 USD (20 winners)"
+      },
+      {
+        "fact": "prizes",
+        "quote": "Most Valuable Feedback: $100 USD * NVIDIA swag pack (10 winners)"
       },
       {
         "fact": "deadline",
         "quote": "Submission Period: Wednesday, August 26, 2026 (9:00 am Pacific Time) – Friday, October 30, 2026 (10:00 am Pacific Time)"
+      },
+      {
+        "fact": "judging",
+        "quote": "Entries will be judged on the following equally weighted criteria, and according to the sole and absolute discretion of the judges: Technological Implementation, Design, Potential Impact, Quality of the Idea"
       },
       {
         "fact": "eligibility",
@@ -183,20 +208,44 @@
     ]
   },
   "llm:verdict": {
-    "verdict": "APPLY",
-    "escalation": null,
-    "summary": "This is a legitimate global hackathon with $50,000 in verified cash prizes, a verified sponsor (Nebius B.V. and NVIDIA), and no material risks. You are eligible as a resident of Austria and citizen of Romania.",
+    "verdict": "CAUTION",
+    "escalation": {
+      "criterion": "token_promotion",
+      "quote": "Nebius Token Factory"
+    },
+    "summary": "This is a real hackathon with verified sponsors (Nebius B.V. and NVIDIA) and genuine cash prizes, but the mandatory use of 'Nebius Token Factory' signals a token-ecosystem promotion and the rules require you to submit product feedback — both are material risks for a builder who wants straightforward cash compensation.",
     "reasons": [
-      "Sponsor Nebius B.V. is verified on Devpost and NVIDIA is a major reputable company; judges include NVIDIA staff.",
-      "Cash prizes total $50,000 (Grand $20k, 2nd $10k, 3rd $6k, Best Use of Tavily $3k, 20 City Winners $500 each, 10 Feedback awards $100 each) paid via electronic bank transfer.",
-      "Eligibility excludes only sanctioned countries (Brazil, Quebec, Russia, Crimea, Cuba, Iran, North Korea); Austria and Romania are not excluded.",
-      "Judging uses standard technical criteria (Implementation, Design, Impact, Idea) at judges' discretion — no engagement farming.",
-      "Non-cash track prizes (Jetson Orin Nano hardware) are alongside real cash prizes; you can realistically compete for cash awards."
+      "Sponsor Nebius B.V. is verified on Devpost and NVIDIA judges are involved; $39,000 in cash prizes (Grand, 2nd, 3rd, Best Use of Tavily, City Awards, Feedback Awards) are real and payable via bank transfer after winner affidavit.",
+      "You are eligible: Austria and Romania are not on the U.S.-sanctioned exclusion list, and you meet the age-of-majority requirement.",
+      "The platform you must build on is called 'Nebius Token Factory' — the name and the requirement to use it strongly indicate a token/ecosystem promotion, which the rubric treats as a material risk.",
+      "Official Rules require every submission to 'provide feedback on Nebius tools and NVIDIA models used' and there is a dedicated 'Most Valuable Feedback' prize ($100 × 10 + swag), making feedback collection an explicit engagement-farming mechanic.",
+      "Track winners receive only hardware (NVIDIA Jetson Orin Nano), not cash, and City Winner Awards require physical attendance at listed cities (none in Austria), limiting the prizes you can realistically compete for."
     ],
     "eligible": true,
-    "additionalFlags": []
+    "additionalFlags": [
+      {
+        "label": "Token ecosystem promotion",
+        "quote": "Nebius Token Factory",
+        "explanation": "The hackathon requires building on 'Nebius Token Factory' or Nebius AI Cloud; the 'Token Factory' branding indicates the event serves to drive adoption of a token-related platform."
+      },
+      {
+        "label": "Mandatory feedback harvesting",
+        "quote": "Submission must provide feedback on Nebius tools and NVIDIA models used",
+        "explanation": "Rules make feedback a submission requirement and offer a separate prize for it, turning product feedback into a contest mechanic."
+      },
+      {
+        "label": "Track prizes are hardware only",
+        "quote": "Coding and Agentic Engineering Track Winner: NVIDIA Jetson Orin Nano",
+        "explanation": "All four track winners receive a Jetson device instead of cash; your payout preference is fiat/USDC, so these prizes don't match your needs."
+      },
+      {
+        "label": "City awards require travel",
+        "quote": "City Winner Awards: $500 USD (20 winners) ... Entrants attending one of the following participating IRL city events (Builders & Brews): Tokyo, Da Nang, Seoul, Kuala Lumpur, Singapore, Taipei, Tel Aviv, London, Copenhagen, Stockholm, Warsaw, Amsterdam, Berlin, Paris, Mexico City, New York City, Toronto, Boston, San Francisco",
+        "explanation": "No Austrian city is listed, so you cannot compete for the 20 × $500 City Winner Awards without international travel."
+      }
+    ]
   },
-  "meta:capturedAt": "2026-10-21T10:57:14.083Z",
+  "meta:capturedAt": "2026-10-21T11:24:02.830Z",
   "meta:models": {
     "fast": "nvidia/Nemotron-3_5-Lightning",
     "reasoning": "nvidia/Nemotron-3-Ultra-550b-a55b"

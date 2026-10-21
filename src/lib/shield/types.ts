@@ -132,6 +132,7 @@ export interface AnalysisResult {
   summary: string;
   reasons: string[];
   eligibility: Eligibility;
+  deadline: string | null; // ISO date when known
   prizes: Prize[];
   flags: RedFlag[];
   ev: ExpectedValue;
@@ -139,4 +140,5 @@ export interface AnalysisResult {
   sources: string[];
   timingsMs: Record<string, number>;
   analyzedAt: string;
+  pipelineVersion: number;
 }
