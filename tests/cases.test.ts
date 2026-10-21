@@ -19,6 +19,7 @@ describe.each(CASES)("$id", (c) => {
     const ids = result.flags.map((f) => f.id);
 
     expect(result.verdict, `flags: ${ids.join(", ")}`).toBe(c.expected);
+    expect(result.gateVerdict).toBe(c.expectedGate ?? c.expected);
     for (const id of c.mustFlag) expect(ids, `missing ${id}`).toContain(id);
     for (const id of c.mustNotFlag ?? []) expect(ids, `unexpected ${id}`).not.toContain(id);
 

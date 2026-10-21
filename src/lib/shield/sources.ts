@@ -155,7 +155,7 @@ interface DevpostHackathon {
   invite_only: boolean;
 }
 
-async function devpostFacts(url: string, title: string | null, io: IO): Promise<{ facts: PlatformFacts; text: string }> {
+async function devpostFacts(url: string, title: string | null, rules: string | null, io: IO): Promise<{ facts: PlatformFacts; text: string }> {
   const facts: PlatformFacts = { platform: "devpost", online: null };
   if (!title) return { facts, text: "" };
   const res = (await io.httpJson(
@@ -164,6 +164,7 @@ async function devpostFacts(url: string, title: string | null, io: IO): Promise<
   const host = new URL(url).hostname;
   const h = res.hackathons.find((x) => new URL(x.url, "https://devpost.com").hostname === host);
   if (!h) return { facts, text: "" };
+  let prizeText = "";
   const total = Number(htmlToText(h.prize_amount).replace(/[^\d.]/g, "")) || null;
   Object.assign(facts, {
     title: h.title,
@@ -177,15 +178,45 @@ async function devpostFacts(url: string, title: string | null, io: IO): Promise<
     submissionCount: null,
     raw: { prizes_counts: h.prizes_counts, invite_only: h.invite_only, period: h.submission_period_dates },
   } satisfies Partial<PlatformFacts>);
+  const table = rules ? parseDevpostPrizeTable(rules) : null;
+  if (table?.prizes.length) {
+    facts.prizes = table.prizes;
+    facts.prizeCount = table.winners;
+    prizeText = `\nPrizes (official rules):\n${table.text}`;
+  }
   const text = `Devpost listing: ${h.title} — ${h.displayed_location.location}; total prizes ${htmlToText(
     h.prize_amount,
-  )}; ${h.prizes_counts.cash} cash prizes and ${h.prizes_counts.other} other prizes; ${h.registrations_count} participants registered.`;
+  )}; ${h.prizes_counts.cash} cash prizes and ${h.prizes_counts.other} other prizes; ${h.registrations_count} participants registered.${prizeText}`;
   return { facts, text };
+}
+
+/**
+ * Devpost prize table from the official rules page ("| Grand Prize | * $20,000 USD | 1 | ... |").
+ * The main page's prize cards lose their amounts in Tavily Extract; the rules table keeps them.
+ */
+export function parseDevpostPrizeTable(rules: string): { prizes: Prize[]; winners: number; text: string } {
+  const prizes: Prize[] = [];
+  const lines: string[] = [];
+  let winners = 0;
+  for (const row of rules.split("\n")) {
+    const cells = row.split("|").map((c) => c.replace(/^\s*\*\s*/, "").trim());
+    // ["", name, items, quantity, eligibility, ""]
+    if (cells.length < 5 || !/^\d+$/.test(cells[3])) continue;
+    const [, name, items, qty] = cells;
+    const count = Number(qty);
+    const amount = items.match(/\$\s*([\d,]+)/);
+    const kind: Prize["kind"] = amount ? "cash" : /credit/i.test(items) ? "credits" : "other";
+    prizes.push({ place: count > 1 ? `${name} (x${count})` : name, amount: amount ? Number(amount[1].replace(/,/g, "")) : null, currency: amount ? "USD" : null, kind });
+    winners += count;
+    lines.push(`- ${name}: ${items} (${count} winner${count > 1 ? "s" : ""})`);
+  }
+  return { prizes, winners, text: lines.join("\n") };
 }
 
 function firstHeading(markdown: string | null): string | null {
   const m = markdown?.match(/^#\s+(.+)$/m);
-  return m ? m[1].replace(/[*_[\]]/g, "").trim() : null;
+  // Headings can be markdown links: "[Title](https://...)" or "Title(https://...)".
+  return m ? m[1].replace(/\(https?:[^)]*\)/g, "").replace(/[*_[\]]/g, "").trim() : null;
 }
 
 // ---------- Sponsor research (Tavily Search) ----------
@@ -202,6 +233,27 @@ async function researchSponsor(facts: PlatformFacts, io: IO): Promise<SearchHit[
     console.warn("sponsor research failed", err);
     return [];
   }
+}
+
+// ---------- Live listing vs. indexed snapshot ----------
+
+const squash = (s: string) => s.toLowerCase().replace(/[^a-z0-9$]+/g, " ").trim();
+
+/** Sponsors sometimes edit a listing after it is indexed (title, prize pool). That edit is itself a signal. */
+export function compareSnapshot(facts: PlatformFacts, page: string): PlatformFacts["snapshotChanges"] {
+  const changes: NonNullable<PlatformFacts["snapshotChanges"]> = [];
+  const heading = page.match(/^#\s+(.+)$/m)?.[1]?.trim();
+  if (facts.title && heading && squash(heading) !== squash(facts.title)) {
+    changes.push({ field: "title", live: facts.title, snapshot: heading });
+  }
+  const total = page.match(/([\d,]+(?:\.\d+)?)\s*(USDC|USDG|USDT|USD)\s*Total Prizes/i);
+  if (total && facts.totalPrizeUsd != null) {
+    const snap = Number(total[1].replace(/,/g, ""));
+    if (Math.abs(snap - facts.totalPrizeUsd) > 1) {
+      changes.push({ field: "total prizes", live: `${facts.totalPrizeUsd}`, snapshot: `${snap}` });
+    }
+  }
+  return changes;
 }
 
 // ---------- Entry point ----------
@@ -228,9 +280,10 @@ export async function fetchSource(rawUrl: string, io: IO): Promise<SourceBundle>
       rules = await io.tavilyExtract(`${url}/rules`);
     } catch {}
     if (rules) page = `${page ?? ""}\n\n# Official rules\n\n${rules}`;
-    api = await devpostFacts(url, firstHeading(page), io);
+    api = await devpostFacts(url, firstHeading(page), rules, io);
   }
   if (api.text) fetchedWith.push(`${platform}:api`);
+  if (page && platform === "superteam") api.facts.snapshotChanges = compareSnapshot(api.facts, page);
   if (!page && !api.text) throw new Error(`Could not read ${url}`);
 
   const sponsorResearch = await researchSponsor(api.facts, io);
@@ -239,7 +292,9 @@ export async function fetchSource(rawUrl: string, io: IO): Promise<SourceBundle>
   return {
     url,
     platform,
-    text: [api.text, page].filter(Boolean).join("\n\n---\n\n"),
+    text: [api.text && `## Live listing (platform API)\n\n${api.text}`, page && `## Page snapshot (Tavily Extract)\n\n${page}`]
+      .filter(Boolean)
+      .join("\n\n---\n\n"),
     facts: api.facts,
     sponsorResearch,
     fetchedWith,

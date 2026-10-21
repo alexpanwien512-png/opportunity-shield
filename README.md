@@ -22,13 +22,14 @@ URL ─▶ Tavily Extract ──────────┐   page text: every q
                                 ▼
               Nemotron (fast) ─ structured extraction (JSON schema): prizes, region, preconditions, quotes
                                 ▼
-              Rule engine ───── 17 deterministic red-flag "skills" (editable params + severity)
+              Rule engine ───── 18 deterministic red-flag "skills" (editable params + severity)
                                 │  a flag without verbatim evidence is dropped
                                 ▼
               EV model ──────── P(win) = prizes / (competitors + 1); EV/hour vs. your rate
                                 ▼
               Nemotron (reasoning) ─ final APPLY / CAUTION / AVOID + summary
-                                     • can only be *stricter* than the rule ceiling
+                                     • can only be *stricter* than the rule ceiling, and only by naming
+                                       a rubric criterion backed by a verbatim quote from the page
                                      • extra flags kept only if their quote is on the page
 ```
 
@@ -39,14 +40,14 @@ URL ─▶ Tavily Extract ──────────┐   page text: every q
 | **Nebius Token Factory** | OpenAI-compatible endpoint `https://api.tokenfactory.nebius.com/v1/`, structured output via `response_format: json_schema` | [`src/lib/shield/live.ts`](src/lib/shield/live.ts) |
 | **Nemotron (fast)** | Extracts prizes per place, cash vs. non-cash, region, preconditions, judging, effort estimate and verbatim quotes. Thinking is disabled. | [`src/lib/shield/llm.ts`](src/lib/shield/llm.ts) `extractFacts` |
 | **Nemotron (reasoning, Ultra)** | Final verdict over profile + facts + flags + EV, with thinking enabled. Capped by the deterministic rule ceiling. | [`src/lib/shield/llm.ts`](src/lib/shield/llm.ts) `judge` |
-| **Tavily Extract** (`advanced`) | The page text every piece of evidence is checked against. Devpost listings also extract `/rules`. | [`src/lib/shield/sources.ts`](src/lib/shield/sources.ts) `fetchSource` |
+| **Tavily Extract** (`advanced`) | The page text every piece of evidence is checked against. Devpost listings also extract `/rules`, whose prize table gives the per-place amounts. | [`src/lib/shield/sources.ts`](src/lib/shield/sources.ts) `fetchSource` |
 | **Tavily Search** | Sponsor reputation checks (scam / rug / presale reports) and, next, discovery for Scan | [`src/lib/shield/sources.ts`](src/lib/shield/sources.ts) `researchSponsor` |
 
 Model IDs are set in `.env` (`NEMOTRON_FAST_MODEL`, `NEMOTRON_REASONING_MODEL`). `npm run models` checks them against `GET /v1/models`.
 
 ### Why hybrid (rules + LLM)?
 
-A bounty scanner that can hallucinate an accusation is useless. In Opportunity Shield the deterministic rules set a verdict ceiling, and the model can only be stricter than that ceiling. A flag shows up only when its quote is actually on the fetched page or comes from a platform API. If Token Factory or Tavily is down, the analysis still returns a rules-only verdict and says so.
+A bounty scanner that can hallucinate an accusation is useless. Reasoning models also drift: at temperature 0.6, Ultra gave the same listing CAUTION, AVOID and APPLY across runs. In Opportunity Shield the deterministic rules set a verdict ceiling, and the model can only be stricter than that ceiling. A flag shows up only when its quote is actually on the fetched page or comes from a platform API. If Token Factory or Tavily is down, the analysis still returns a rules-only verdict and says so.
 
 ## Red-flag rules
 
@@ -66,6 +67,7 @@ A bounty scanner that can hallucinate an accusation is useless. In Opportunity S
 | Token / presale promotion | high |
 | Requires an existing project | high |
 | Bounty only as a `/bounty $X` line, no escrow bot | medium |
+| Listing edited after publication (live API vs. Tavily snapshot: title, prize pool) | medium |
 | Unverified sponsor | medium |
 | Judged on engagement (likes / reposts) | medium |
 | Disproportionate competition (> 15 entries per prize) | medium |
@@ -104,7 +106,7 @@ npm run capture        # live: re-runs all cases against GitHub/Superteam/Devpos
 | [bookningsapp #1](https://github.com/jomaaabbe78-spec/bookningsapp/issues/1): "[TEST BOUNTY]", $50 for a typo, "DM for payment details" | AVOID |
 | [Superteam travel boost](https://superteam.fun/earn/listing/travel-boost-for-bp26): Germany only (profile: Austria) | AVOID |
 | [Vaultline audit grants](https://superteam.fun/earn/listing/vaultline-security-audit-grants-for-colosseum-projects-up-to-4000-usdc-each): "not paid out as cash" | AVOID |
-| [$CHIMP thread](https://superteam.fun/earn/listing/chimp-on-metaplex): token sale promo, unverified sponsor, 241 submissions for 14 prizes | CAUTION |
+| [$CHIMP thread](https://superteam.fun/earn/listing/chimp-on-metaplex): token sale promo, unverified sponsor, 242 submissions for 14 prizes, prize pool cut 2,000 → 500 USDC after publication | CAUTION |
 | [Nebius x NVIDIA Global AI Hackathon](https://nebiusglobalaihackathon.devpost.com) | APPLY |
 
 ## License

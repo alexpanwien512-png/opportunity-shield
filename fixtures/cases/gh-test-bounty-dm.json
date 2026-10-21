@@ -1,4 +1,5 @@
 {
+  "tavily:extract:https://github.com/jomaaabbe78-spec/bookningsapp/issues/1": "[Skip to content](#start-of-content)   \n \n \n\n## Navigation Menu\n\n[Sign in](/login?return_to=https%3A%2F%2Fgithub.com%2Fjomaaabbe78-spec%2Fbookningsapp%2Fissues%2F1)\n\nAppearance settings\n\n[Sign in](/login?return_to=https%3A%2F%2Fgithub.com%2Fjomaaabbe78-spec%2Fbookningsapp%2Fissues%2F1)\n\n[Sign up](/signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F%3Cuser-name%3E%2F%3Crepo-name%3E%2Fvoltron%2Fissues_fragments%2Fissue_layout&source=header-repo&source_repo=jomaaabbe78-spec%2Fbookningsapp)\n\nAppearance settings\n\nYou signed in with another tab or window. Reload to refresh your session. You signed out in another tab or window. Reload to refresh your session. You switched accounts on another tab or window. Reload to refresh your session. Dismiss alert\n\n{{ message }}\n\n## Repository navigation\n\n \n\n# [TEST BOUNTY] Fix typo in README #1\n\nCopy link\n\nCopy link\n\nOpen\n\nOpen\n\n[[TEST BOUNTY] Fix typo in README](/jomaaabbe78-spec/bookningsapp/issues/1#top)#1\n\n[#8](https://github.com/jomaaabbe78-spec/bookningsapp/pull/8) (+4)\n\nCopy link\n\nLabels\n\n[bounty](https://github.com/jomaaabbe78-spec/bookningsapp/issues?q=state%3Aopen%20label%3A%22bounty%22)[good first issueGood for newcomers](https://github.com/jomaaabbe78-spec/bookningsapp/issues?q=state%3Aopen%20label%3A%22good%20first%20issue%22)Good for newcomers\n\n## Description\n\n[![@jomaaabbe78-spec](https://avatars.githubusercontent.com/u/243651359?v=4&size=48)](https://github.com/jomaaabbe78-spec)\n\n[jomaaabbe78-spec](https://github.com/jomaaabbe78-spec)\n\nopened [on Oct 20, 2026](https://github.com/jomaaabbe78-spec/bookningsapp/issues/1#issue-5949384825)\n\nIssue body actions\n\n**Bounty: $50**\n\nThere is a typo in README.md: \"Welcom\" should be \"Welcome\".\n\n**Reward:** $50 via PayPal/Crypto\n\n**Contact:** DM for payment details\n\nReactions are currently unavailable\n\n## Activity\n\n1. [![](https://avatars.githubusercontent.com/u/243651359?s=64&v=4)jomaaabbe78-spec](/jomaaabbe78-spec)\n\n   added\n\n   [good first issueGood for newcomers](/jomaaabbe78-spec/bookningsapp/issues?q=state%3Aopen%20label%3A%22good%20first%20issue%22)Good for newcomers\n\n   [bounty](/jomaaabbe78-spec/bookningsapp/issues?q=state%3Aopen%20label%3A%22bounty%22)\n\n   [on Oct 20, 2026](https://github.com/jomaaabbe78-spec/bookningsapp/issues/1#event-33784036355)\n2. ### yhpopcommentedon Oct 20, 2026\n\n   [![@yhpop](https://avatars.githubusercontent.com/u/34944096?u=18f1e7b513776ace8ec01b93073fedd492e3b71d&v=4&size=48)](/yhpop)\n\n   [yhpop](/yhpop)\n\n   [on Oct 20, 2026](https://github.com/jomaaabbe78-spec/bookningsapp/issues/1#issuecomment-6301133944)\n\n   More actions\n\n   Is this a genuine paid task or only a bounty-system test? I checked README.md on main, but could not find `Welcom`. If the $50 USD PayPal offer is real, please point to the exact file and commit/branch, and confirm the acceptance and payment terms before I start. I have not made a change or claimed the bounty.\n3. [![](https://avatars.githubusercontent.com/u/287848478?s=64&v=4)juanpablo12campo-eng](/juanpablo12campo-eng)\n\n   added 3 commits that reference this issue [on Oct 20, 2026](https://github.com/jomaaabbe78-spec/bookningsapp/issues/1#event-33784227320)\n\n   [feat: implement solution.py for [jomaaabbe78-spec#1](https://github.com/jomaaabbe78-spec/bookningsapp/issues/1)](https://github.com/juanpablo12campo-eng/bookningsapp/commit/02b8d0791c56c8326ff8428999d4b2b34dd8c6b0)\n\n   [02b8d07](https://github.com/juanpablo12campo-eng/bookningsapp/commit/02b8d0791c56c8326ff8428999d4b2b34dd8c6b0)\n\n   [feat: implement test\\_solution.py for [jomaaabbe78-spec#1](https://github.com/jomaaabbe78-spec/bookningsapp/issues/1)](https://github.com/juanpablo12campo-eng/bookningsapp/commit/d11362b235282ec26b80b91903078c290fdc555a)\n\n   [d11362b](https://github.com/juanpablo12campo-eng/bookningsapp/commit/d11362b235282ec26b80b91903078c290fdc555a)\n\n   [feat: implement README.md for [jomaaabbe78-spec#1](https://github.com/jomaaabbe78-spec/bookningsapp/issues/1)](https://github.com/juanpablo12campo-eng/bookningsapp/commit/da1d1c02c935e735d7832726c9dd67b3c20fcbca)\n\n   [da1d1c0](https://github.com/juanpablo12campo-eng/bookningsapp/commit/da1d1c02c935e735d7832726c9dd67b3c20fcbca)\n4. [![](https://avatars.githubusercontent.com/u/243651359?s=64&v=4)jomaaabbe78-spec](/jomaaabbe78-spec)\n\n   added 2 commits that reference this issue [on Oct 20, 2026](https://github.com/jomaaabbe78-spec/bookningsapp/issues/1#event-33784294354)\n\n   [Fix: Add Welcome section to README (bounty [#1](https://github.com/jomaaabbe78-spec/bookningsapp/issues/1))](https://github.com/jomaaabbe78-spec/bookningsapp/commit/24b738c1cb19c86f4a17d08f2f36b67fd7164bb3)\n\n   [24b738c](https://github.com/jomaaabbe78-spec/bookningsapp/commit/24b738c1cb19c86f4a17d08f2f36b67fd7164bb3)\n\n   [Merge PR [#3](https://github.com/jomaaabbe78-spec/bookningsapp/pull/3): Fix Welcome section (bounty [#1](https://github.com/jomaaabbe78-spec/bookningsapp/issues/1))](https://github.com/jomaaabbe78-spec/bookningsapp/commit/58e9448959c8740e0cf3dd1851914da41e22ca02)\n\n   [58e9448](https://github.com/jomaaabbe78-spec/bookningsapp/commit/58e9448959c8740e0cf3dd1851914da41e22ca02)\n5. ### segunmicheal27commentedon Oct 20, 2026\n\n   [![@segunmicheal27](https://avatars.githubusercontent.com/u/11904451?u=8c431f470068fccc88a7f0fbfa0d53b84be0589c&v=4&size=48)](/segunmicheal27)\n\n   [segunmicheal27](/segunmicheal27)\n\n   [on Oct 20, 2026](https://github.com/jomaaabbe78-spec/bookningsapp/issues/1#issuecomment-6301193921)\n\n   More actions\n\n   ### ⚡ Autonomous Solution & Implementation\n\n   ### 1. Executive Summary & Root Cause\n\n   * **Issue:** A typographical error exists in the project's `README.md` file where the heading/greeting reads `\"Welcom\"` instead of the correct spelling `\"Welcome\"`.\n   * **Impact:** Minor visual polish issue affecting repository presentation and user onboarding.\n   * **Solution:** Fix the typo directly in `README.md`.\n\n   ---\n\n   ### 2. Exact Code Implementation\n\n   Below is the diff and exact change required for `README.md`:\n\n   ```\n   - # Welcom to Bookningsapp - + # Welcome to Bookningsapp +\n   ```\n\n   #### Updated `README.md` Header Section:\n\n   ```\n   # Welcome to Bookningsapp Welcome to Bookningsapp\n   ```\n\n   ---\n\n   ### 3. Verification Steps\n\n   1. **Inspect `README.md`:**  \n       Open the file or run `git diff` to verify the spelling correction:\n\n      ```\n      git diff README.md\n      ```\n   2. **Commit and Push:**\n\n      ```\n      \"fix(readme): fix typo Welcom to Welcome\" \" \"\n      ```\n\n   ---\n\n   *Solution automatically engineered & submitted by **Thanos Web3 Autonomous Agent** ([@segunmicheal27](https://github.com/segunmicheal27)).*\n\n[Sign up for free](/signup?return_to=https://github.com/jomaaabbe78-spec/bookningsapp/issues/1) **to join this conversation on GitHub.** Already have an account? [Sign in to comment](/login?return_to=https://github.com/jomaaabbe78-spec/bookningsapp/issues/1)\n\n## Metadata\n\n## Metadata\n\nNo one assigned\n\n### Labels\n\n[bounty](https://github.com/jomaaabbe78-spec/bookningsapp/issues?q=state%3Aopen%20label%3A%22bounty%22)[good first issueGood for newcomers](https://github.com/jomaaabbe78-spec/bookningsapp/issues?q=state%3Aopen%20label%3A%22good%20first%20issue%22)Good for newcomers\n\nNo projects\n\nNo milestone\n\nNone yet\n\nNo branches or pull requests\n\n## Issue actions\n\nYou can’t perform that action at this time.\n\n ",
   "http:https://api.github.com/repos/jomaaabbe78-spec/bookningsapp/issues/1": {
     "url": "https://api.github.com/repos/jomaaabbe78-spec/bookningsapp/issues/1",
     "repository_url": "https://api.github.com/repos/jomaaabbe78-spec/bookningsapp",
@@ -375,7 +376,116 @@
     ],
     "search_type": "lexical"
   },
-  "meta:capturedAt": "2026-10-21T10:09:19.687Z",
+  "tavily:search:\"jomaaabbe78-spec\" scam OR presale OR token launch OR complaints||": [
+    {
+      "title": "Token pre-sale scams | MetaMask Help Center",
+      "url": "https://support.metamask.io/stay-safe/protect-yourself/tokens-and-transactions/token-pre-sale-scams",
+      "content": "# Token pre-sale scams\n\nToken pre-sales are periods during which organisations offer quantities of new tokens for investors to buy early. The 'pre' references the fact that these sales typically come before the actual sale — generally referred to as an initial coin offering, or ICO.\n\nwarning\n\n#### Not financial advice​ [...] None of the information here is meant to recommend or dissuade you from getting involved with token pre-sales or ICOs. Those decisions are entirely yours. All we aim to provide is an overview of how this subject area can be used by scammers to steal your funds.\n\nThese events naturally attract a lot of interest from speculators: if you jump on the right token at a bargain price, its price may skyrocket. Step 3: profit?\n\n## How does it work?​ [...] Appear legitimate by pushing out articles that mimic the design and domain names of trusted news sources\n    Attract traffic by closely copying the appearance legitimate token pre-sale sites, but using a slightly different URL out of necessity.\n2. The site prompts you to buy the token. This will generally be a token approval, enabling the dapp to access and move tokens of a certain type from your wallet, up to a given cap (chosen by you).",
+      "score": 0.3014242
+    },
+    {
+      "title": "Healix Protocol's Spectacular Launch and HLX Token Presale: Shaking Up the Crypto Sphere!",
+      "url": "https://finance.yahoo.com/news/healix-protocols-spectacular-launch-hlx-141000238.html",
+      "content": "charge towards a more efficient, transparent, and patient-centric healthcare ecosystem. [...] As Healix Protocol's spectacular launch and HLX token presale gather momentum, the time to act is now. Whether you're an experienced investor seeking to diversify your portfolio or a newcomer looking to stake your claim in the future of healthcare, there has never been a better time to get involved. By participating in the HLX token presale, you not only stand to reap financial rewards but also contribute to a brighter, healthier future for generations to come. Don't miss out on this [...] growth and widespread adoption.",
+      "score": 0.26232463
+    },
+    {
+      "title": "Bitcoin Munari Confirms December 28 as Official Token Launch Date While 48 Hours Left for Final Presale Round | Markets Insider",
+      "url": "https://markets.businessinsider.com/news/stocks/bitcoin-munari-confirms-december-28-as-official-token-launch-date-while-48-hours-left-for-final-presale-round-1035665054",
+      "content": "their own research and consult with a qualified financial advisor before making any investment decisions. However, due to the inherently speculative nature of the blockchain sector—including cryptocurrency, NFTs, and mining—complete accuracy cannot always be guaranteed.Neither the media platform nor the publisher shall be held responsible for any fraudulent activities, misrepresentations, or financial losses arising from the content of this press release. In the event of any legal claims or [...] and should not be considered financial, investment, or trading advice.Investing in crypto and mining-related opportunities involves significant risks, including the potential loss of capital. It is possible to lose all your capital. These products may not be suitable for everyone, and you should ensure that you understand the risks involved. Seek independent advice if necessary. Speculate only with funds that you can afford to lose. Readers are strongly encouraged to conduct their own research [...] Legal Disclaimer: This media platform provides the content of this article on an \"as-is\" basis, without any warranties or representations of any kind, express or implied. We assume no responsibility for any inaccuracies, errors, or omissions. We do not assume any responsibility or liability for the accuracy, content, images, videos, licenses, completeness, legality, or reliability of the information presented herein. Any concerns, complaints, or copyright issues related to this article should",
+      "score": 0.17702733
+    },
+    {
+      "title": "Beware Cryptocurrency Scams | Mass.gov",
+      "url": "https://www.mass.gov/info-details/beware-cryptocurrency-scams",
+      "content": "Initial Coin Offerings (“ICOs”) are the cryptocurrency equivalent of an initial public offering for stocks. Investors in an ICO are invited to buy a new cryptocurrency from, or get a stake in, a company representing a project. This, on its face, is not necessarily a scam. However, scammers may use ICOs as an opportunity. [...] Initial Public Offering or “IPO”: IPO is the process of offering shares of a private corporation to the public in a new stock issuance for the first time. An IPO allows a company to raise equity capital from public investors. [...] One type of ICO scam, commonly referred to as a “pump and dump” scheme, involves a scammer convincing many people to invest in an ICO to drive up the price of the coin. The scammer then quickly sells off all their own holdings, thereby destroying the value of the coin and leaving the rest of the investors with nothing.",
+      "score": 0.11980942
+    },
+    {
+      "title": "Public Awareness: Investment Scam",
+      "url": "https://hamiltonpolice.on.ca/news/public-awareness-investment-scam",
+      "content": "Remember that being cautious and conducting due diligence can go a long way in protecting your financial well-being and avoiding investment scams.\n\nIf you have been a victim of a cryptocurrency investment scam and suffered a financial loss, please report the incident online at  or call our non-emergency number at 905-546-4925. [...] If you were contacted about this type of scam but did not experience a financial loss, please contact the Canadian Anti-Fraud Centre at 1-888-495-8501 or visit www.antifraudcentre-centreantifraude.ca.\n\nFor more information about scams and frauds, including cryptocurrency investment scams, in a variety of languages, please visit:\n\nEarlier news\n\nMore recent news\n\n03\n\nOct\n\n2024\n\n|  12:05 America/New\\_York\n\n### Unsanctioned Social Gatherings and Nuisance Parties 03\n\nOct\n\n2024",
+      "score": 0.10124257
+    }
+  ],
+  "llm:extraction": {
+    "title": "[TEST BOUNTY] Fix typo in README",
+    "sponsor": null,
+    "taskSummary": "Fix a typo in README.md where 'Welcom' should be 'Welcome'.",
+    "taskCategory": "content",
+    "online": true,
+    "regionRestriction": null,
+    "eligibilityNotes": [
+      "Must have access to the repository to edit README.md.",
+      "Good for newcomers label indicates suitability for new contributors."
+    ],
+    "preconditions": [
+      "Access to the repository's main branch.",
+      "Ability to edit and commit changes to README.md."
+    ],
+    "prizes": [
+      {
+        "place": "1st",
+        "amount": 50,
+        "currency": "USD",
+        "kind": "cash"
+      }
+    ],
+    "paymentMethod": "PayPal/Crypto",
+    "judging": [
+      "Correcting the typo 'Welcom' to 'Welcome' in README.md.",
+      "Verifying the fix via git diff or file inspection."
+    ],
+    "deadline": null,
+    "estimatedHours": 1,
+    "quotes": [
+      {
+        "fact": "prizes",
+        "quote": "Bounty: $50"
+      },
+      {
+        "fact": "paymentMethod",
+        "quote": "Reward: $50 via PayPal/Crypto"
+      },
+      {
+        "fact": "regionRestriction",
+        "quote": "There is a typo in README.md: \"Welcom\" should be \"Welcome\"."
+      },
+      {
+        "fact": "preconditions",
+        "quote": "Good for newcomers"
+      }
+    ]
+  },
+  "llm:verdict": {
+    "verdict": "AVOID",
+    "escalation": {
+      "criterion": "trap_or_bait",
+      "quote": "# [TEST BOUNTY] Fix typo in README"
+    },
+    "summary": "This is explicitly labeled a TEST BOUNTY and requires off-platform payment via DM, making it a bait listing with unverifiable rewards. Do not spend time on it.",
+    "reasons": [
+      "Title explicitly states '[TEST BOUNTY]' indicating a test/bait listing, not a real paid opportunity.",
+      "Payment instructions say 'DM for payment details' — no escrow, no platform guarantee, cannot be verified.",
+      "Sponsor account is unverified (no verification badge) and repository has 0 stars, created recently, consistent with a test setup.",
+      "A commenter (yhpop) questioned whether the typo even exists and asked for payment terms confirmation; no sponsor reply is visible.",
+      "Autonomous agent submissions and quick sponsor merges suggest automated testing of the bounty system, not genuine work."
+    ],
+    "eligible": true,
+    "additionalFlags": [
+      {
+        "label": "Unverifiable off-platform payment",
+        "quote": "**Contact:** DM for payment details",
+        "explanation": "Payment arranged via direct message with no escrow or platform protection; reward cannot be verified or enforced."
+      },
+      {
+        "label": "Unverified sponsor",
+        "quote": "sponsorVerified: null",
+        "explanation": "Sponsor account lacks GitHub verification badge; combined with test-bounty label, indicates a throwaway or bot account."
+      }
+    ]
+  },
+  "meta:capturedAt": "2026-10-21T10:56:23.503Z",
   "meta:models": {
     "fast": "nvidia/Nemotron-3_5-Lightning",
     "reasoning": "nvidia/Nemotron-3-Ultra-550b-a55b"

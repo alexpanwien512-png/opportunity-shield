@@ -4,7 +4,8 @@ import { DEFAULT_PROFILE } from "../src/lib/shield/profile";
 export interface Case {
   id: string;
   url: string;
-  expected: Verdict;
+  expected: Verdict; // final verdict (rules ceiling + Nemotron Ultra)
+  expectedGate?: Verdict; // deterministic ceiling, when it differs from the final verdict
   mustFlag: string[]; // rule ids that must fire
   mustNotFlag?: string[];
 }
@@ -23,8 +24,9 @@ export const CASES: Case[] = [
     mustFlag: ["region-mismatch"] },
   { id: "st-non-cash-audit", url: "https://superteam.fun/earn/listing/vaultline-security-audit-grants-for-colosseum-projects-up-to-4000-usdc-each", expected: "AVOID",
     mustFlag: ["non-cash-prize", "precondition-existing-project", "unverified-sponsor"] },
+  // Real money, eligible, but token promo, unverified sponsor, prize pool cut 2,000 → 500 USDC after publication.
   { id: "st-token-promo", url: "https://superteam.fun/earn/listing/chimp-on-metaplex", expected: "CAUTION",
-    mustFlag: ["token-promotion", "unverified-sponsor", "competition-ratio"],
+    mustFlag: ["token-promotion", "unverified-sponsor", "competition-ratio", "listing-changed"],
     mustNotFlag: ["region-mismatch", "non-cash-prize"] },
   { id: "dp-nebius", url: "https://nebiusglobalaihackathon.devpost.com", expected: "APPLY",
     mustFlag: [], mustNotFlag: ["region-mismatch", "non-cash-prize", "token-promotion", "precondition-existing-project"] },

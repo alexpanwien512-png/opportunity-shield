@@ -3,7 +3,8 @@ import { z } from "zod";
 import type { IO } from "./io";
 import type { Extraction, Profile, RedFlag, SourceBundle, Verdict } from "./types";
 
-const MAX_PAGE_CHARS = 24_000;
+// Lightning and Ultra both have 1M-token context; rules pages run to ~40k chars.
+const MAX_PAGE_CHARS = 80_000;
 
 const nullableString = { type: ["string", "null"] };
 
@@ -54,13 +55,19 @@ export const EXTRACTION_SCHEMA = {
   },
 } as const;
 
+// Models sometimes write the string "null" / "N/A" instead of JSON null.
+const optText = z.preprocess(
+  (v) => (typeof v === "string" && /^\s*(null|none|n\/?a|unknown|not specified|)\s*$/i.test(v) ? null : v),
+  z.string().nullable(),
+).catch(null);
+
 const ExtractionZ = z.object({
   title: z.string(),
-  sponsor: z.string().nullable(),
+  sponsor: optText,
   taskSummary: z.string(),
   taskCategory: z.enum(["code", "security", "design", "content", "social", "research", "other"]).catch("other"),
   online: z.boolean().nullable(),
-  regionRestriction: z.string().nullable(),
+  regionRestriction: optText,
   eligibilityNotes: z.array(z.string()).catch([]),
   preconditions: z.array(z.string()).catch([]),
   prizes: z.array(z.object({
@@ -69,9 +76,9 @@ const ExtractionZ = z.object({
     currency: z.string().nullable(),
     kind: z.enum(["cash", "crypto", "credits", "services", "discount", "merch", "other"]).catch("other"),
   })).catch([]),
-  paymentMethod: z.string().nullable().catch(null),
+  paymentMethod: optText,
   judging: z.array(z.string()).catch([]),
-  deadline: z.string().nullable().catch(null),
+  deadline: optText,
   estimatedHours: z.number().nullable().catch(null),
   quotes: z.array(z.object({ fact: z.string(), quote: z.string() })).catch([]),
 });
@@ -108,12 +115,29 @@ export async function extractFacts(io: IO, model: string, bundle: SourceBundle):
 
 // ---------- verdict ----------
 
+export const ESCALATION_CRITERIA = [
+  // AVOID criteria
+  "trap_or_bait", "unverifiable_or_offplatform_payment", "user_ineligible", "prize_not_money",
+  // CAUTION criteria
+  "token_promotion", "unverified_sponsor", "terms_edited", "engagement_judging", "unmet_precondition",
+] as const;
+
 export const VERDICT_SCHEMA = {
   type: "object",
   additionalProperties: false,
-  required: ["verdict", "summary", "reasons", "eligible", "additionalFlags"],
+  required: ["verdict", "summary", "reasons", "eligible", "additionalFlags", "escalation"],
   properties: {
     verdict: { type: "string", enum: ["APPLY", "CAUTION", "AVOID"] },
+    escalation: {
+      type: ["object", "null"],
+      description: "Required only when your verdict is stricter than the rule ceiling: the rubric criterion and a verbatim page quote proving it. Otherwise null.",
+      additionalProperties: false,
+      required: ["criterion", "quote"],
+      properties: {
+        criterion: { type: "string", enum: ESCALATION_CRITERIA },
+        quote: { type: "string" },
+      },
+    },
     summary: { type: "string", description: "Two sentences max, addressed to the user." },
     reasons: { type: "array", items: { type: "string" }, maxItems: 5 },
     eligible: { type: ["boolean", "null"] },
@@ -136,6 +160,7 @@ const VerdictZ = z.object({
   reasons: z.array(z.string()).catch([]),
   eligible: z.boolean().nullable().catch(null),
   additionalFlags: z.array(z.object({ label: z.string(), quote: z.string(), explanation: z.string() })).catch([]),
+  escalation: z.object({ criterion: z.enum(ESCALATION_CRITERIA), quote: z.string() }).nullable().catch(null),
 });
 export type ModelVerdict = z.infer<typeof VerdictZ>;
 
@@ -155,8 +180,17 @@ export async function judge(
         role: "system",
         content:
           "You are Opportunity Shield, a skeptical advisor protecting a developer's time from fake bounties, bait listings and ineligible opportunities. " +
-          "Decide APPLY (worth the time and eligible), CAUTION (real but risky or poor odds) or AVOID (trap, ineligible, or not real money). " +
+          `Today is ${new Date().toISOString().slice(0, 10)}. ` +
+          "The verdict is about legitimacy and eligibility; the odds are shown to the user separately as expected value. Rubric:\n" +
+          "- AVOID: a trap or bait (engagement farming, test bounty, bounty farm), payment that cannot be verified or happens off-platform, the user is ineligible, or the prize is not withdrawable money.\n" +
+          "- CAUTION: real money and the user is eligible, but there are material risks — token/presale promotion, unverified sponsor, terms edited after publication, engagement-based judging, preconditions the user may not meet.\n" +
+          "- APPLY: legitimate sponsor, real money, user eligible, no material risks. A large field of competitors is normal for big hackathons and does NOT by itself lower APPLY.\n" +
+          "When the live listing (platform API) and the page snapshot disagree, the live listing is the truth. " +
+          "Follow the rubric literally. Requirements that are simply the rules of the challenge (use a given stack, submit a video, open-source the code) are not risks. " +
+          "Standard legal boilerplate found in virtually every official contest rulebook is not a risk either: the sponsor may amend the rules or cancel, prize substitution of equal or greater value, arbitration clauses, winner affidavits and tax forms, prize delivery timelines. " +
+          "Some non-cash prizes alongside real cash prizes are normal; flag non-cash only when the prize you would realistically compete for is not money. " +
           `Deterministic rules already set a ceiling of ${gate}: you may be stricter, never more lenient. ` +
+          "To be stricter you must fill `escalation` with the rubric criterion and a verbatim page quote; an escalation without a matching quote is discarded. " +
           "Only add flags you can support with a verbatim quote from the page. " +
           `Respond with JSON matching this schema: ${JSON.stringify(VERDICT_SCHEMA)}`,
       },
@@ -168,7 +202,7 @@ export async function judge(
           `EXTRACTED: ${JSON.stringify(extraction)}`,
           `RULE FLAGS: ${JSON.stringify(flags.map((f) => ({ label: f.label, severity: f.severity, evidence: f.evidence[0]?.quote })))}`,
           `EXPECTED VALUE: ${evSummary}`,
-          `PAGE (truncated):\n${bundle.text.slice(0, 12_000)}`,
+          `PAGE:\n${bundle.text.slice(0, MAX_PAGE_CHARS)}`,
         ].join("\n\n"),
       },
     ],

@@ -52,6 +52,8 @@ export interface PlatformFacts {
   attemptCount?: number; // "/attempt" comments seen in sampled pages
   attemptSampleSize?: number;
   bountyOnlyInComment?: boolean;
+  /** Differences between the live listing (API) and the page snapshot Tavily returned. */
+  snapshotChanges?: { field: string; live: string; snapshot: string }[];
   raw?: Record<string, unknown>;
 }
 
@@ -125,6 +127,8 @@ export interface AnalysisResult {
   verdict: Verdict;
   gateVerdict: Verdict; // ceiling imposed by deterministic rules
   modelVerdict: Verdict | null;
+  /** Set when the model asked for a stricter verdict than the rules; accepted only with a verbatim quote. */
+  escalation: { to: Verdict; criterion: string | null; quote: string | null; accepted: boolean } | null;
   summary: string;
   reasons: string[];
   eligibility: Eligibility;

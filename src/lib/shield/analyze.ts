@@ -61,7 +61,14 @@ export async function analyzeUrl(url: string, opts: AnalyzeOptions): Promise<Ana
   const allFlags = [...flags, ...modelFlags];
 
   const gate = gateVerdict(allFlags);
-  const verdict = model ? stricter(gate, model.verdict) : gate;
+  // The model may only be stricter than the rules when it proves a rubric criterion with a quote on the page.
+  let verdict = gate;
+  let escalation: AnalysisResult["escalation"] = null;
+  if (model && stricter(gate, model.verdict) !== gate) {
+    const proven = !!model.escalation && isVerbatim(model.escalation.quote, bundle.text) && criterionAllows(model.escalation.criterion, model.verdict);
+    escalation = { to: model.verdict, criterion: model.escalation?.criterion ?? null, quote: model.escalation?.quote ?? null, accepted: proven };
+    if (proven) verdict = model.verdict;
+  }
 
   const regionFlag = allFlags.find((f) => f.id === "region-mismatch");
   const eligibility: Eligibility = {
@@ -80,6 +87,7 @@ export async function analyzeUrl(url: string, opts: AnalyzeOptions): Promise<Ana
     verdict,
     gateVerdict: gate,
     modelVerdict: model?.verdict ?? null,
+    escalation,
     summary: model?.summary ?? FALLBACK_SUMMARY[verdict],
     reasons: model?.reasons ?? allFlags.map((f) => f.explanation),
     eligibility,
@@ -91,6 +99,11 @@ export async function analyzeUrl(url: string, opts: AnalyzeOptions): Promise<Ana
     timingsMs: t,
     analyzedAt: new Date().toISOString(),
   };
+}
+
+const AVOID_CRITERIA = new Set(["trap_or_bait", "unverifiable_or_offplatform_payment", "user_ineligible", "prize_not_money"]);
+function criterionAllows(criterion: string, to: Verdict): boolean {
+  return to === "AVOID" ? AVOID_CRITERIA.has(criterion) : true;
 }
 
 const SEV = { critical: 0, high: 1, medium: 2, low: 3 } as const;

@@ -124,7 +124,8 @@ const detectors: Record<string, Detector> = {
     if (ctx.bundle.platform !== "github") return null;
     const title = ctx.bundle.facts.title ?? "";
     const byKeyword = rx(spec.params.pattern).test(title);
-    const byModel = ctx.extraction && ["content", "social"].includes(ctx.extraction.taskCategory);
+    // "content" is too broad (a README typo is content); only trust the model for social-media tasks.
+    const byModel = ctx.extraction?.taskCategory === "social";
     if (!byKeyword && !byModel) return null;
     return {
       explanation: "A non-technical task (writing/social) posted as a bounty in a code repository.",
@@ -250,6 +251,19 @@ const detectors: Record<string, Detector> = {
     return null;
   },
 
+  "listing-changed": (ctx) => {
+    const changes = ctx.bundle.facts.snapshotChanges ?? [];
+    if (!changes.length) return null;
+    const prize = changes.find((c) => c.field === "total prizes");
+    return {
+      explanation: prize
+        ? `The prize pool was changed from ${prize.snapshot} to ${prize.live} after the listing was published — bait-and-switch risk.`
+        : "The listing was edited after it was published; check that the terms you read are the current ones.",
+      evidence: changes.map((c) => ({ quote: `${c.field}: now "${c.live}", previously "${c.snapshot}"`, source: "superteam:api vs tavily:extract" })),
+      severity: prize && Number(prize.live) < Number(prize.snapshot) ? "medium" : "low",
+    };
+  },
+
   blacklist: (ctx) => {
     const f = ctx.bundle.facts;
     const keys = [f.repo, f.sponsorName, f.sponsorUrl && new URL(f.sponsorUrl).hostname].filter(Boolean).map((s) => s!.toLowerCase());
@@ -293,6 +307,7 @@ export const DEFAULT_RULES: RuleSpec[] = [
     params: { pattern: String.raw`\b(projects?|teams?) (that|who) (took part|participated|competed) in|must (already )?have (an existing|a live|a deployed)|codebase is feature-complete` } },
   { id: "engagement-judging", label: "Judged on engagement", description: "Likes/reposts/views decide the winner.", severity: "medium", enabled: true,
     params: { pattern: String.raw`\b(likes|reposts|retweets|impressions|views)\b[^\n]{0,40}\b(count|matter|judg|score)|\bengagement\b[^\n]{0,20}:` } },
+  { id: "listing-changed", label: "Listing edited after publication", description: "Live listing differs from the indexed snapshot (title or prize pool).", severity: "medium", enabled: true, params: {} },
   { id: "competition-ratio", label: "Disproportionate competition", description: "Far more submissions than prizes.", severity: "medium", enabled: true, params: { maxRatio: 15, submitRate: 0.08 } },
 ];
 

@@ -1,4 +1,5 @@
 {
+  "tavily:extract:https://superteam.fun/earn/listing/travel-boost-for-bp26": "[![Superteam Earn](/assets/logo.svg)](/earn)\n\n[Bounties](/earn/all?tab=bounties)[Projects](/earn/all?tab=projects)[Grants](/earn/grants)[![Crypto World's Fair](https://res.cloudinary.com/dgvnuwspr/image/upload/assets//hackathon/crypto-world-fair/logo.png)](/earn/hackathon/crypto-worlds-fair)[![Next Stop Breakpoint](https://res.cloudinary.com/dgvnuwspr/image/upload/v1789989283/assets/hackathon/next-stop-breakpoint/bp-mobile.png)](/earn/next-stop-breakpoint \"Next Stop Breakpoint\")\n\n[![Superteam Earn](/assets/logo.svg)](/earn)\n\n[![Superteam Germany](https://res.cloudinary.com/dgvnuwspr/image/upload/v1680563012/earn-sponsors/recDH2T4vsTezh3Je.png)](/earn/s/superteam-germany)\n\nTravel boost: Create Content for Breakpoint 2026\n\n[by Superteam Germany](/earn/s/superteam-germany)|\n|\n|\n\n1\n\nAbhishek\n\n# Travel boost: Create Content for Breakpoint 2026\n\n[by Superteam Germany](/earn/s/superteam-germany)|\n|\n\nOpen\n\n|\n\n[Prizes](/earn/listing/travel-boost-for-bp26/)[Details](/earn/listing/travel-boost-for-bp26/)\n\n|  |\n| --- |\n| 6,000USDG  Total Prizes |\n| 400  USDG  1st  400  USDG  2nd  400  USDG  3rd  400  USDG  4th  400  USDG  5th  400  USDG  6th  400  USDG  7th  400  USDG  8th  400  USDG  9th  400  USDG  10th  400  USDG  x5(Bonus) |\n\n2\n\nSUBMISSIONS\n\nSyncing...\n\nREMAINING\n\nREGIONAL LISTING\n\nThis listingis only open for people in[Germany](/earn/regions/germany)\n\nSKILLS NEEDED\n\n[Content](/earn/skill/content)\n\nCONTACT\n\n[Reach out](https://t.me/+3Y2DX_7Plus1NzMy)if you have any questions about this listing\n\nWINNER ANNOUNCEMENT BY\n\nOctober 30, 2026 - as scheduled by the sponsor.\n\nRELATED LIVE LISTINGS\n\n## About Superteam Germany\n\nSuperteam Germany is part of a global network of communities building the Solana ecosystem. We're all about empowering developers and creators to build cool stuff on Solana. We host events, bounties, and provide resources to help folks get started and grow in the Solana space.\n\n## Mission\n\nCreate banger content about Breakpoint 2026 !\n\n✨ If you've never been, let us know why you're dying to go this year.\n\n✨ Or share your best memories at Breakpoint.\n\n👉 The goal is simple: Make people feel excited, included, and compelled to attend.\n\nDepending on your audience, your content could speak to:\n\n* Newcomers on Solana who don’t know yet what to expect of Breakpoint\n* Builders / developers\n* Community members & power users\n\n## Scope Detail\n\n* Create a social media post on X, Instagram or LinkedIn expressing your excitement for Breakpoint 2026 (<https://solana.com/breakpoint>)\n* Your CTA should invite people to register for the event: <https://luma.com/breakpoint2026?tk=HYnlfc>\n* Highlight a Germany/Superteam Germany angle in your post. This could be anything from being member of the German Solana community or your excitement to meet us there.\n* Quote Retweet (QRT) [this post](https://x.com/SuperteamDE/status/2110642401895194874?s=2010:03) with a thoughtful comment.\n* Tag both @SolanaEvents and @SuperteamDE in your post.\n* Any type of image or video content is allowed (AI, animation, personal, ..)\n\n## Submission Requirements\n\n* A link to your original social media post.\n* A link to Quote Retweet of Superteam Germany's announcement post.\n* Content must be in English.\n* Ensure both required tags (@SolanaEvents and @SuperteamDE) are included.\n* Include the CTA link: <https://luma.com/breakpoint2026?tk=HYnlfc>\n\n## Judging Criteria\n\n* **Creativity and Engagement:** How interesting and engaging is your post?\n* **Clarity of Enthusiasm:** Does your post clearly show what you're excited about for Breakpoint?\n* **Correct Tags:** Have you correctly tagged @SolanaEvents and @SuperteamDE?\n* **Completion of Requirements:** Have you submitted both an original post and a QRT?\n* **Video submissions are favored**\n\n## Rewards\n\nWe will pick 15 winners to receive a travel boost **worth 400 USDG each**.\n\nSKILLS NEEDED\n\nContent\n\nCONTACT\n\n[Reach out](https://t.me/+3Y2DX_7Plus1NzMy)if you have any questions about this initialBounty\n\nWINNER ANNOUNCEMENT BY\n\nOctober 30, 2026 - as scheduled by the sponsor.",
   "http:https://superteam.fun/api/listings/details/travel-boost-for-bp26": {
     "id": "c0c52925-1f13-45d0-b283-2bb174fac499",
     "title": "Travel boost: Create Content for Breakpoint 2026",
@@ -83,7 +84,144 @@
     "Hackathon": null
   },
   "http:https://superteam.fun/api/listings/c0c52925-1f13-45d0-b283-2bb174fac499/submission-count": 15,
-  "meta:capturedAt": "2026-10-21T10:09:20.465Z",
+  "llm:extraction": {
+    "title": "Travel boost: Create Content for Breakpoint 2026",
+    "sponsor": "Superteam Germany",
+    "taskSummary": "Create a social media post on X, Instagram or LinkedIn expressing excitement for Breakpoint 2026, include a CTA link, highlight a Germany/Superteam Germany angle, and Quote Retweet the sponsor's announcement post with correct tags.",
+    "taskCategory": "content",
+    "online": true,
+    "regionRestriction": "Germany",
+    "eligibilityNotes": [
+      "Content must be in English",
+      "Both required tags (@SolanaEvents and @SuperteamDE) must be included",
+      "CTA link must be included",
+      "Must submit both an original post and a Quote Retweet"
+    ],
+    "preconditions": [],
+    "prizes": [
+      {
+        "place": "1st",
+        "amount": 400,
+        "currency": "USDG",
+        "kind": "cash"
+      },
+      {
+        "place": "2nd",
+        "amount": 400,
+        "currency": "USDG",
+        "kind": "cash"
+      },
+      {
+        "place": "3rd",
+        "amount": 400,
+        "currency": "USDG",
+        "kind": "cash"
+      },
+      {
+        "place": "4th",
+        "amount": 400,
+        "currency": "USDG",
+        "kind": "cash"
+      },
+      {
+        "place": "5th",
+        "amount": 400,
+        "currency": "USDG",
+        "kind": "cash"
+      },
+      {
+        "place": "6th",
+        "amount": 400,
+        "currency": "USDG",
+        "kind": "cash"
+      },
+      {
+        "place": "7th",
+        "amount": 400,
+        "currency": "USDG",
+        "kind": "cash"
+      },
+      {
+        "place": "8th",
+        "amount": 400,
+        "currency": "USDG",
+        "kind": "cash"
+      },
+      {
+        "place": "9th",
+        "amount": 400,
+        "currency": "USDG",
+        "kind": "cash"
+      },
+      {
+        "place": "10th",
+        "amount": 400,
+        "currency": "USDG",
+        "kind": "cash"
+      },
+      {
+        "place": "x5(Bonus)",
+        "amount": 400,
+        "currency": "USDG",
+        "kind": "cash"
+      }
+    ],
+    "paymentMethod": null,
+    "judging": [
+      "Creativity and Engagement",
+      "Clarity of Enthusiasm",
+      "Correct Tags",
+      "Completion of Requirements",
+      "Video submissions are favored"
+    ],
+    "deadline": null,
+    "estimatedHours": null,
+    "quotes": [
+      {
+        "fact": "regionRestriction",
+        "quote": "This listing is only open for people in Germany"
+      },
+      {
+        "fact": "prizes",
+        "quote": "We will pick 15 winners to receive a travel boost worth 400 USDG each."
+      },
+      {
+        "fact": "judging",
+        "quote": "Creativity and Engagement: How interesting and engaging is your post?"
+      },
+      {
+        "fact": "judging",
+        "quote": "Clarity of Enthusiasm: Does your post clearly show what you're excited about for Breakpoint?"
+      },
+      {
+        "fact": "judging",
+        "quote": "Correct Tags: Have you correctly tagged @SolanaEvents and @SuperteamDE?"
+      },
+      {
+        "fact": "judging",
+        "quote": "Completion of Requirements: Have you submitted both an original post and a QRT?"
+      },
+      {
+        "fact": "judging",
+        "quote": "Video submissions are favored"
+      }
+    ]
+  },
+  "llm:verdict": {
+    "verdict": "AVOID",
+    "escalation": null,
+    "summary": "You are not eligible because the bounty is restricted to residents of Germany, and you live in Austria. Even if you were eligible, the prize is paid in USDG (a crypto token) and judging depends on social media engagement, which adds uncertainty.",
+    "reasons": [
+      "Region restriction: 'This listing is only open for people in Germany' — you reside in Austria.",
+      "Prize currency is USDG (crypto), not your preferred fiat or USDC.",
+      "Judging includes 'Creativity and Engagement: How interesting and engaging is your post?' — engagement-based judging favors large audiences.",
+      "Requirement to post on X, Instagram, or LinkedIn and Quote Retweet a specific announcement post.",
+      "Video submissions are favored, adding production effort."
+    ],
+    "eligible": false,
+    "additionalFlags": []
+  },
+  "meta:capturedAt": "2026-10-21T10:56:32.695Z",
   "meta:models": {
     "fast": "nvidia/Nemotron-3_5-Lightning",
     "reasoning": "nvidia/Nemotron-3-Ultra-550b-a55b"

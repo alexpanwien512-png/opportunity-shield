@@ -62,7 +62,7 @@ export async function llmJson(req: LlmRequest): Promise<unknown> {
   const body = {
     model: req.model,
     messages: req.messages,
-    temperature: req.reasoning ? 0.6 : 0.1,
+    temperature: req.reasoning ? 0.3 : 0.1,
     max_tokens: req.maxTokens ?? (req.reasoning ? 8000 : 3000),
     response_format: {
       type: "json_schema",
