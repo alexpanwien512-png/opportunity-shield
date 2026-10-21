@@ -12,7 +12,10 @@
     "models": "node --env-file-if-exists=.env --import tsx scripts/list-models.mts",
     "typecheck": "next typegen && tsc --noEmit",
     "warm": "node --import tsx scripts/warm.mts",
-    "screenshots": "node --import tsx scripts/screenshots.mts"
+    "screenshots": "node --import tsx scripts/screenshots.mts",
+    "media:verify": "node --env-file-if-exists=.env --import tsx scripts/media/verify-live.mts",
+    "media:video": "MODE=video node --import tsx scripts/media/demo-video.mts",
+    "media:check": "scripts/media/check-video.sh"
   },
   "dependencies": {
     "@tavily/core": "^0.7.14",

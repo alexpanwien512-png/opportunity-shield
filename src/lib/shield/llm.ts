@@ -3,8 +3,7 @@ import { z } from "zod";
 import type { IO } from "./io";
 import type { Extraction, Profile, RedFlag, SourceBundle, Verdict } from "./types";
 
-// Lightning and Ultra both have 1M-token context; rules pages run to ~40k chars.
-const MAX_PAGE_CHARS = 80_000;
+import { EXTRACT_BUDGET, VERDICT_BUDGET, relevantText } from "./context";
 
 const nullableString = { type: ["string", "null"] };
 
@@ -95,7 +94,7 @@ export function extractionMessages(bundle: SourceBundle) {
     },
     {
       role: "user" as const,
-      content: `URL: ${bundle.url}\nPlatform: ${bundle.platform}\n\nPAGE:\n${bundle.text.slice(0, MAX_PAGE_CHARS)}`,
+      content: `URL: ${bundle.url}\nPlatform: ${bundle.platform}\n\nPAGE (relevant excerpts):\n${relevantText(bundle.text, EXTRACT_BUDGET)}`,
     },
   ];
 }
@@ -203,7 +202,7 @@ export async function judge(
           `EXTRACTED: ${JSON.stringify(extraction)}`,
           `RULE FLAGS: ${JSON.stringify(flags.map((f) => ({ label: f.label, severity: f.severity, evidence: f.evidence[0]?.quote })))}`,
           `EXPECTED VALUE: ${evSummary}`,
-          `PAGE:\n${bundle.text.slice(0, MAX_PAGE_CHARS)}`,
+          `PAGE (relevant excerpts):\n${relevantText(bundle.text, VERDICT_BUDGET)}`,
         ].join("\n\n"),
       },
     ],

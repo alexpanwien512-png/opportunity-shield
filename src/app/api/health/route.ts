@@ -1,5 +1,6 @@
 import { connection } from "next/server";
 import { config } from "@/lib/shield/config";
+import { lastModelError } from "@/lib/shield/live";
 import { store } from "@/lib/shield/store";
 
 /** Liveness + configuration check for the hosting platform (never returns secrets). */
@@ -18,6 +19,7 @@ export async function GET() {
     nebiusKey: !!config.nebiusApiKey,
     tavilyKey: !!config.tavilyApiKey,
     githubToken: !!config.githubToken,
+    lastModelError,
     models: { fast: config.fastModel, reasoning: config.reasoningModel },
   });
 }

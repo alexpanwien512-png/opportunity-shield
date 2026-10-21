@@ -44,7 +44,9 @@ export async function tavilySearch(query: string, opts: TavilySearchOptions = {}
 let nebius: OpenAI | null = null;
 function llm() {
   if (!config.nebiusApiKey) throw new Error("NEBIUS_API_KEY is not set");
-  nebius ??= new OpenAI({ baseURL: config.nebiusBaseUrl, apiKey: config.nebiusApiKey, maxRetries: 3 });
+  // The SDK retries 408/409/429/5xx and connection errors with exponential backoff (honouring Retry-After).
+  // 402 (credit exhausted) and 4xx input errors are not retried: repeating them cannot succeed.
+  nebius ??= new OpenAI({ baseURL: config.nebiusBaseUrl, apiKey: config.nebiusApiKey, maxRetries: 4 });
   return nebius;
 }
 
@@ -58,7 +60,38 @@ export function parseModelJson(content: string): unknown {
   return JSON.parse(text);
 }
 
+/** Last model failure, for /api/health (cleared by the next success). */
+export let lastModelError: { at: string; model: string; reason: string } | null = null;
+
+/** Short, human reason for a model failure ("credits exhausted", "timed out", …). */
+export function modelFailureReason(err: unknown): string {
+  const e = err as { status?: number; name?: string; message?: string };
+  if (e.status === 402) return "Token Factory credits exhausted";
+  if (e.status === 401 || e.status === 403) return "API key rejected";
+  if (e.status === 429) return "rate-limited";
+  if (e.status === 404) return "model not found";
+  if (e.name === "APIConnectionTimeoutError" || /timed? ?out/i.test(e.message ?? "")) return "timed out";
+  if (e.status && e.status >= 500) return "provider error";
+  if (e instanceof SyntaxError) return "malformed JSON";
+  return "unavailable";
+}
+
 export async function llmJson(req: LlmRequest): Promise<unknown> {
+  try {
+    const out = await llmJsonOnce(req).catch(async (err) => {
+      // One extra attempt when the model returned malformed JSON (network/HTTP retries are the SDK's job).
+      if (err instanceof SyntaxError) return llmJsonOnce(req);
+      throw err;
+    });
+    lastModelError = null;
+    return out;
+  } catch (err) {
+    lastModelError = { at: new Date().toISOString(), model: req.model, reason: modelFailureReason(err) };
+    throw err;
+  }
+}
+
+async function llmJsonOnce(req: LlmRequest): Promise<unknown> {
   const body = {
     model: req.model,
     messages: req.messages,
@@ -71,9 +104,9 @@ export async function llmJson(req: LlmRequest): Promise<unknown> {
     // Nemotron 3 toggles reasoning through its chat template.
     chat_template_kwargs: { enable_thinking: !!req.reasoning },
   };
-  const completion = await llm().chat.completions.create(
-    body as unknown as OpenAI.ChatCompletionCreateParamsNonStreaming,
-  );
+  const completion = await llm().chat.completions.create(body as unknown as OpenAI.ChatCompletionCreateParamsNonStreaming, {
+    timeout: req.reasoning ? 120_000 : 45_000,
+  });
   const content = completion.choices[0]?.message?.content;
   if (!content) throw new Error(`Empty completion from ${req.model}`);
   return parseModelJson(content);

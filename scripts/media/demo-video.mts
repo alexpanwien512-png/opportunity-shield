@@ -46,6 +46,11 @@ const OVERLAY = `(() => {
     document.documentElement.appendChild(cur);
     window.__cursor = (x, y) => { cur.style.left = x + "px"; cur.style.top = y + "px"; sessionStorage.setItem("__cur", JSON.stringify({x, y})); };
     window.__press = (x, y, down) => { cur.classList.toggle("down", down); if (!down) return; const r = document.createElement("div"); r.className = "__demo-ripple"; r.style.left = x + "px"; r.style.top = y + "px"; document.documentElement.appendChild(r); setTimeout(() => r.remove(), 600); };
+    // Guard: record any visible text that would show a degraded run (checked after recording).
+    window.__bad = window.__bad || [];
+    const BAD = /unavailable|fallback|rules-only|skipped|exhausted|\berror\b/i;
+    const scan = () => { const t = document.body ? document.body.innerText : ""; const m = t.match(BAD); if (m) { const i = t.search(BAD); window.__bad.push(t.slice(Math.max(0, i - 60), i + 60).replace(/\s+/g, " ")); } };
+    new MutationObserver(scan).observe(document.documentElement, { subtree: true, childList: true, characterData: true });
     window.__caption = (html) => { cap.style.opacity = html ? "1" : "0"; if (html) cap.innerHTML = html; };
   };
   const zoom = () => { if (document.body && ZOOM_VALUE !== 1) document.body.style.zoom = String(ZOOM_VALUE); };
@@ -58,7 +63,18 @@ const scenes: { name: string; at: number }[] = [];
 const mark = (name: string) => scenes.push({ name, at: (Date.now() - t0) / 1000 });
 const wait = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
+async function collectBad(page: Page) {
+  const bad: string[] = await page.evaluate(() => {
+    const w = window as unknown as { __bad?: string[] };
+    const out = w.__bad ?? [];
+    w.__bad = [];
+    return out;
+  }).catch(() => []);
+  badSeen.push(...bad);
+}
+
 async function caption(page: Page, html: string | null) {
+  await collectBad(page);
   await page.evaluate((h) => (window as unknown as { __caption?: (h: string | null) => void }).__caption?.(h), html);
 }
 
@@ -123,6 +139,7 @@ function card(title: string, sub: string, extra = "") {
 }
 
 // ---------- recording ----------
+const badSeen: string[] = [];
 const browser = await chromium.launch();
 const context = await browser.newContext({
   viewport: SIZE,
@@ -292,6 +309,8 @@ if (MODE === "gif") {
   await wait(6500);
 }
 
+const bad: string[] = await page.evaluate(() => (window as unknown as { __bad?: string[] }).__bad ?? []).catch(() => []);
+badSeen.push(...bad);
 const video = page.video();
 await context.close();
 const raw = await video!.path();
@@ -301,3 +320,9 @@ fs.writeFileSync(path.join(OUT, `${MODE}-scenes.json`), JSON.stringify(scenes, n
 console.log("raw:", target);
 console.log(scenes.map((s) => `${s.at.toFixed(1)}s ${s.name}`).join("\n"));
 await browser.close();
+const unique = [...new Set(badSeen)];
+if (unique.length) {
+  console.log(`\n✗ Degraded text was visible during recording:\n  ${unique.join("\n  ")}`);
+  process.exit(1);
+}
+console.log("\n✓ No 'unavailable' / 'error' / 'fallback' text appeared on screen");

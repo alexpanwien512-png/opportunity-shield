@@ -56,7 +56,7 @@ export async function analyzeUrl(url: string, opts: AnalyzeOptions): Promise<Ana
     emit({ step: "extract", status: "done", ms: t.extract, detail: `${n(extraction.prizes.length, "prize")}, ${n(Object.keys(extraction.quotes ?? {}).length, "verbatim quote")}` });
   } catch (err) {
     console.warn("extraction failed, continuing with platform facts only:", (err as Error).message);
-    emit({ step: "extract", status: "skipped", ms: t.extract, detail: "Model unavailable — using platform facts" });
+    emit({ step: "extract", status: "skipped", ms: t.extract, detail: `Skipped (${reasonOf(err)}) — using platform facts` });
   }
 
   const ctx = { bundle, extraction, profile: opts.profile, blacklist: (opts.blacklist ?? []).map((b) => b.toLowerCase()) };
@@ -80,7 +80,7 @@ export async function analyzeUrl(url: string, opts: AnalyzeOptions): Promise<Ana
     emit({ step: "verdict", status: "done", ms: t.verdict, detail: `Model says ${model.verdict.toLowerCase()}` });
   } catch (err) {
     console.warn("verdict model failed, using rule verdict:", (err as Error).message);
-    emit({ step: "verdict", status: "skipped", ms: t.verdict, detail: "Model unavailable — rules-only verdict" });
+    emit({ step: "verdict", status: "skipped", ms: t.verdict, detail: `Skipped (${reasonOf(err)}) — rules-only verdict` });
   }
 
   // Model-proposed flags survive only if their quote is really on the page.
@@ -185,6 +185,15 @@ export function escalationProven(
       // trap_or_bait, unverifiable_or_offplatform_payment, user_ineligible, prize_not_money, unmet_precondition
       return esc.quote.trim().split(/\s+/).length >= 6;
   }
+}
+
+/** Mirrors live.modelFailureReason without importing the network layer into the pure pipeline. */
+function reasonOf(err: unknown): string {
+  const e = err as { status?: number; message?: string };
+  if (e.status === 402) return "Token Factory credits exhausted";
+  if (e.status === 429) return "rate-limited";
+  if (/timed? ?out/i.test(e.message ?? "")) return "timed out";
+  return "model error";
 }
 
 const AVOID_CRITERIA = new Set(["trap_or_bait", "unverifiable_or_offplatform_payment", "user_ineligible", "prize_not_money"]);

@@ -91,7 +91,7 @@ async function githubFacts(url: string, io: IO): Promise<{ facts: PlatformFacts;
   };
   const commentText = comments
     .slice(0, 30)
-    .map((c) => `[comment by ${c.user.login}] ${c.body ?? ""}`)
+    .map((c) => `[comment by ${c.user.login}] ${(c.body ?? "").slice(0, 600)}`)
     .join("\n");
   return { facts, text: `# ${issue.title}\n\n${body}\n\n${commentText}` };
 }
