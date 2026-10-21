@@ -33,3 +33,15 @@ describe.each(CASES)("$id", (c) => {
     }
   });
 });
+
+describe("GitHub API unavailable (rate-limited shared host)", () => {
+  it("still flags a test bounty from the Tavily page text alone", async () => {
+    const c = CASES.find((x) => x.id === "gh-test-bounty-dm")!;
+    const recording = loadRecording(`fixtures/cases/${c.id}.json`);
+    for (const k of Object.keys(recording)) if (k.startsWith("http:https://api.github.com")) delete recording[k];
+    const result = await analyzeUrl(c.url, { io: replayIO(recording), profile: DEMO_PROFILE, models });
+    expect(result.sources).toContain("github:api-unavailable");
+    expect(result.gateVerdict).toBe("AVOID");
+    expect(result.flags.map((f) => f.id)).toEqual(expect.arrayContaining(["test-bounty", "offplatform-payment"]));
+  });
+});

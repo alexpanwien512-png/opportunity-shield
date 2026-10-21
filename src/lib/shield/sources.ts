@@ -273,7 +273,18 @@ export async function fetchSource(rawUrl: string, io: IO): Promise<SourceBundle>
   }
 
   let api: { facts: PlatformFacts; text: string } = { facts: { platform }, text: "" };
-  if (platform === "github") api = await githubFacts(url, io);
+  if (platform === "github") {
+    try {
+      api = await githubFacts(url, io);
+    } catch (err) {
+      // Unauthenticated GitHub API calls share a 60/h limit per IP (exhausted fast on shared hosts).
+      // Without it we lose repo-level signals (age, PR volume, /attempt count) but the page rules still run.
+      if (!page || /Unsupported GitHub URL/.test((err as Error).message)) throw err;
+      console.warn("github api unavailable, using page text only:", (err as Error).message);
+      api = { facts: { platform, title: firstHeading(page) ?? undefined, region: "Global", online: true }, text: "" };
+      fetchedWith.push("github:api-unavailable");
+    }
+  }
   if (platform === "superteam") api = await superteamFacts(url, io);
   if (platform === "devpost") {
     let rules: string | null = null;

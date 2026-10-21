@@ -33,7 +33,7 @@ Every option uses the same image: `ghcr.io/<github-user>/opportunity-shield:late
 | `SCAN_MAX_LIMIT` | recommended | `6`: maximum deep analyses per scan |
 | `SHIELD_DB_PATH` | no | default `/data/shield.db` in the image |
 | `SHIELD_DB_JOURNAL` | no | `DELETE` if `/data` is a network/shared filesystem |
-| `GITHUB_TOKEN` | no | raises the GitHub API limit from 60 to 5,000 requests per hour |
+| `GITHUB_TOKEN` | **yes on shared hosts** | A classic token with **no scopes** (public data only). It raises the GitHub API limit from 60 to 5,000 requests per hour. On Render the shared outbound IPs exhaust the anonymous limit, and GitHub analyses then lose the repo-level signals (age, PR volume, /attempt count). |
 
 **Public-demo safety, already built in:**
 - Each visitor gets their own memory (profile, history, blacklist, rules) through an anonymous `os_sid` cookie.
@@ -98,6 +98,8 @@ npm run warm -- https://<endpoint-url>   # pre-computes the 7 demo cases so judg
 2. Set **Instance type** to Free and **Port** to `3000`.
 3. Add the environment variables from the table above. Mark both keys as secret.
 4. Deploy, then run `npm run warm -- https://<app>.onrender.com`.
+
+You can also skip the build: choose **New → Web Service → Existing Image** with `ghcr.io/<github-user>/opportunity-shield:latest`. Render does not redeploy that image on its own. After each push, wait for the *Docker image* workflow, then run **Manual Deploy → Deploy latest reference**.
 
 Free instances sleep when idle, and the filesystem is ephemeral. The demo still works, but memory resets on each deploy and after sleep.
 
